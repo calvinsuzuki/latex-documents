@@ -1,0 +1,164 @@
+\chapter{Realizações}\label{chp:realizacoes}
+
+\section{Estudos sobre desenvolvimento Android}
+
+O desenvolvimento de aplicativos para \textit{Android} foi estudado nos primeiros meses da pesquisa. Nessa parte do projeto, a pesquisa teve aspecto mais técnico, que foi necessário para a programação das futuras aplicações que estariam por vir. A \textit{IDE} (ambiente de desenvolvimento integrado) utilizada foi o \textit{Android Studio}, que foi sugerida pelo curso adquirido da \textit{Udemy} \cite{udemy}. 
+
+Após as primeiras semanas de aprendizado \textit{Android}, foi iniciado uma pesquisa sobre o desenvolvimento de aplicativos voltados a realidade aumentada. Antes ir diretamente nisso, uma interessante teste foi realizado com \textit{OpenCV} para \textit{Android} \cite{opencv}. Consistiu em realizar as primeira manipulações da imagem da câmera. A experiência foi proveitosa para o aprendizado da integração de ferramentas externas ao projeto padrão da plataforma e que, ademais, será feito muitas vezes até a conclusão da pesquisa.
+
+A primeira biblioteca de realidade aumentada a ser testada foi o \textit{Google Sceneform} \cite{Sceneform}. Muitos problemas foram encontrados na integração dos \textit{plugins} com o \textit{Android Studio}, pois este precisava estar em uma versão antiga específica para funcionar normalmente. Após a instalação, foi possível ver a primeira projeção em realidade aumentada em um simulador de \textit{smartphone} no computador (figura \ref{fig:sceneform-sim}). Restava testar o aplicativo para um \textit{smartphone} real, porém o afastamento dos integrantes do laboratório pela pandemia, e a falta de dispositivos compatíveis à minha disposição, causaram um atraso nos testes. Felizmente, foi gerado um arquivo que permite a instalação à distância e o aplicativo funcionou com sucesso nos celulares da equipe (figura \ref{fig:sceneform-real}).
+
+\begin{figure}[ht]
+\centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{figuras/sceneform.png}
+        \caption{Simulação da projeção AR no \textit{Android Studio}}
+        \label{fig:sceneform-sim}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{figuras/sceneformAR.png}
+        \caption{\textit{Smartphone} com o aplicativo funcionando}
+        \label{fig:sceneform-real}
+    \end{subfigure}
+    \caption{Resultados adquiridos com o \textit{Google Sceneform}. Fonte: Autor.}
+    \label{fig:historico}
+\end{figure}
+
+Prosseguindo os estudos de aplicativos AR, percebemos que os problemas de versão tidos com o \textit{Sceneform} estavam sendo reparados pelo \textit{Google}, porém com um novo nome: \textit{Google ARCore Services} \cite{arcore-googleplay}. A proposta é que uma biblioteca seja instalada no celular para que os aplicativos terem acesso, trazendo a vantagem da redução do tamanho das aplicações produzidas. No entanto, somente uma lista restrita de \textit{smartphones} modernos podem instalar essa biblioteca, a justificativa dos desenvolvedores é a compatibilidade com o sistema (ou \textit{API}) \cite{arcore-list}.
+
+Seguido disso, durante a pesquisa foi encontrado uma nova ideia \textit{open-source}, também do \textit{Google}, chamado \textit{Mediapipe}, que tinha a proposta de entregar muitas ferramentas de visão computacional com ML (\textit{machine learning}) integrado \cite{mediapipe-docs}. O projeto foi iniciado em julho de 2019, e tem ganhado mais popularidade por ser gratuito, multi-plataforma e facilitar muito a aplicação de ML para \textit{Android}, \textit{iOS}, e PC. No momento da descoberta, não era conhecido a compatibilidade do \textit{Mediapipe} com \textit{API} antigas de \textit{Android} e muito menos o seu comportamento em óculos de realidade aumentada, por isso, a ideia foi reservada.
+
+\begin{description}
+   \item Um sumário das opções testadas com breves comentários abaixo:
+   \item[\textit{Google Sceneform}] É um \textit{plugin} para \textit{Android Studio} que introduz muitas ferramentas para o desenvolvimento de aplicativos AR. Funciona somente em \textit{Android} com a \textit{API} 24 ou superior. Seu projeto foi arquivado em meados de 2020. 
+   \item[\textit{Google ARCore Services}] Pode se considerar o sucessor das ideias do \textit{Sceneform}. Ele fornece uma biblioteca de ferramentas modernas de AR e atualizações frequentes. Funciona somente em uma lista estrita de \textit{smartphones} modernos. 
+   \item[\textit{Mediapipe}] Fornece uma grande quantidade de ferramentas baseadas em \textit{Machine Learning} para visão computacional. Projeto iniciado em junho de 2019 e ganhando mais força recentemente. Pela recente criação, não é conhecido seu comportamento em \textit{API} antigas (28 ou anterior).
+\end{description}
+
+% \begin{figure}[ht]
+% \centering
+%     \begin{subfigure}{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=.95\textwidth]{figuras/opencv-canny.jpg}
+%         \caption{Aplicativo com \textit{OpenCV} integrado no \textit{Android}}
+%         \label{fig:canny}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=.95\textwidth]{figuras/sceneform.png}
+%         \caption{Primeiro aplicativo AR para \textit{Android}}
+%         \label{fig:sceneform}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=.95\textwidth]{figuras/PaperCarAR.png}
+%         \caption{Aplicativo de exemplo fornecido pela \textit{EPSON}}
+%         \label{fig:papercar}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%         \includegraphics[width=.95\linewidth]{figuras/VCranium.png}
+%         \caption{Primeira versão do \textit{VCranium}}
+%         \label{fig:vcranium_alpha}
+%     \end{subfigure}
+%     \caption{Histórico de realizações da pesquisa até a primeira entrega parcial. Fonte: Autor.}
+%     \label{fig:historico}
+% \end{figure}
+
+
+\section{Estudos de desenvolvimento Unity}
+
+\section{Arquitetura do sistema}
+
+Para a definição de uma arquitetura adequada para o projeto foram analisados os exemplos que a literatura pôde nos dar como
+
+[Fazer Tabela de arquiteturas]
+
+Para esse fim, a equipe realizou reuniões e debates para estabelecer uma solução que seja compatível para um período de seis meses e respeitando as medidas de prevenção por afastamento imposto pela pandemia de COVID-19. Decide-se criar sistema que envolve um computador executando um servidor em \textit{Python}; uma 
+
+% que possui ampla compatibilidade com ferramentas atuais de realidade aumentada, e conectar com os óculos executando uma aplicação \textit{Unity} que posicionaria os objetos 3D na visão do usuário sob as instruções do servidor.
+
+Foram estudados diversos tipos de arquitetura do sistema de projeção em realidade aumentada
+
+A escolha da arquitetura do sistema foi baseada na aplicação dos conceitos menos complexos da visão computacional: a detecção da posição de um marcador no espaço. Essa aplicação foi o ponto de partida de estudos das projeções em realidade aumentada em imagens capturadas por uma câmera.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.9\linewidth]{figuras/System schematic.png}
+    \caption{A figura representa o funcionamento do sistema. (1) Captura a imagem do paciente e envia para o computador. (2) Faz uma varredura na imagem e identifica o marcador ArUco. (3) Calcula a posição do marcador e envia as coordenadas para os óculos. (4) Recebe as informações e exibe a projeção para o usuário e então retorna para o passo 1. Fonte: Autor.}
+    \label{fig:arc}
+\end{figure}
+
+% \textbf{Algoritmo de detecção da posição de marcador}
+% \textbf{Entrada:} Imagem da câmera
+% \textbf{Saída:} Posição do marcador
+
+% \textbf{Etapa 1:} Capture uma imagem da câmera e vá para a Etapa 4, senão há imagem então pare.
+
+% \textbf{Etapa 2:} Identifique o ArUco e vá para a Etapa 3.
+
+% \textbf{Etapa 3:} Estime da posição do marcador no espaço em referência a câmera e retorne à Etapa 1.
+
+% \section{Rascunho}
+%% 
+
+% \textit{Vuforia} também tem o suporte do reconhecimento de objetos tridimensionais, porém, os critérios devem ser respeitados:
+% \begin{itemize}
+%     \item O objeto deve caber no marcador auxiliar (folha A4)
+%     \item O objeto não pode conter partes transparentes, translúcidas, luminosas ou reluzentes
+%     \item O objeto precisa ter a morfologia (forma) completamente estática
+% \end{itemize}
+
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=.6\linewidth]{figuras/VCranium.png}
+%     \caption{Na esquerda, um teste com um cubo orientado com a face. Na direita, o protótipo do \textit{VCranium} e a exibição do formato de rosto detectado pelo programa. Fonte: Autor.}
+%     \label{fig:vcranium}
+% \end{figure}
+
+% \begin{figure}[ht]
+% \centering
+%     \begin{subfigure}{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=.95\textwidth]{figuras/ConeSTL.png}
+%         \caption{Modelo em \textit{STL} do objeto}
+%         \label{fig:cone-stl}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%         \includegraphics[width=.95\linewidth]{figuras/Cone.png}
+%         \caption{Sessão de captura feita em uma mesa preta}
+%         \label{fig:cone-training}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=.95\textwidth]{figuras/ConeSTL.png}
+%         \caption{Modelo em \textit{STL} do objeto}
+%         \label{fig:cone-stl}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%         \includegraphics[width=.95\linewidth]{figuras/Cone.png}
+%         \caption{Sessão de captura feita em uma mesa preta}
+%         \label{fig:cone-training}
+%     \end{subfigure}
+%     \caption{A tentativa com o cone foi feita em outro ambiente com o fim dar um maior destaque no objeto. Fonte: Autor.}
+%     \label{fig:ConeAR}
+% \end{figure}
+
+% \begin{center}
+% \begin{tabular}{ |c|c| } 
+% \hline
+% \textbf{Arquivo} & \textit{\textbf{Descrição}} \\ 
+% \hline
+% \textit{CalibrationTool.apk} & Aplicativo de calibração da projeção da tela dos óculos\\ 
+% \hline
+% \multirow{2}{*}{\textit{CaptureTool.apk}} & Ferramenta que ajuda a capturar fotos para \\  & o mapeamento de novos marcadores e objetos \\
+% \hline
+% \multirow{2}{*}{\textit{TrainingToolWindows}} & Usa as imagens obtidas do \textit{CaptureTool.apk} e cria o \\ & \textit{dataset} para a detecção do novo marcador ou objeto  \\
+% \hline
+% \textit{Moverio\_AR} & Exemplo de cena que aplica funções do \textit{Moverio} no \textit{Unity} \\ 
+% \hline
+% \end{tabular}
+% \end{center}
+
+

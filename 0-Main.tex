@@ -1,0 +1,121 @@
+%% Escolha: Portugues ou Ingles.
+\documentclass[Portugues]{projetoFAPESP}
+%\documentclass[Ingles]{projetoFAPESP}
+
+%% Adicione o arquivo com as referências bibliográficas
+\addbibresource{bibliografia.bib}
+\usepackage{indentfirst}
+%% Página de título
+%% Observação: As definições que aparecem a seguir comporão a
+%%             página de título e a folha de rosto.
+%% Define o nome da universidade onde o projeto será desenvolvido.
+\universidade{Universidade de São Paulo}
+\Proj{2020/15835-4}
+%
+%% Define o nome da faculdade onde o projeto será desenvolvido.
+\faculdade{Escola de Engenharia de São Carlos}
+%
+%% Define o título do projeto.
+\titulo{COMPILA RAPIDO PRA CARALHO}
+%
+%% Define o título do projeto em inglês.
+\tituloIngles{Positioning and view of 3D images using a augmented reality glasses to surgery application}
+%
+%% Define a agencia de Fomento e a abreviatura. O primeiro argumento é o 
+%% nome por extenso e o segundo a abreviatura.
+%% Se não houver abreviatura, deixe o segundo argumento vazio.
+\agFomento{Fundação de Amparo à Pesquisa do Estado de São Paulo}{FAPESP}
+%
+%% Define a modalidade de projeto. 
+%% Pode ser temático, regular, iniciação cientifica, mestrado, doutorado etc.
+\modalidadeProjeto{de auxílio à iniciação científica}
+%
+%% Define o autor do projeto e seu título (e.g. Dr.).
+\autor{Glauco Augusto de Paula Caurin}{Dr.}
+\Coorientador{Paulo Henrique Polegato}{}
+%
+%% Define o nome do beneficiário, se for o caso de bolsa. Esse comando é opcional.
+\beneficiario{Calvin Suzuki de Camargo}
+%
+%
+%% Define o período da vigência do Projeto.
+%% Os parâmetros são dia, mês e ano. Use apenas números.
+\inicioPeriodoVigencia{01}{03}{2021}
+\periodoRelatorio{28}{02}{2022}
+\fimPeriodoVigencia{28}{02}{2022}
+%
+%% Define a cidade onde o projeto será desenvolvido.
+\cidade{São Carlos}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{comment}
+\usepackage{subcaption}
+%\usepackage[table,xcdraw]{xcolor}
+ 
+\setlength{\parindent}{4em}
+\setlength{\parskip}{0.77em}
+%\renewcommand{\baselinestretch}{2.0}
+%
+%% Página de título
+%% Observação: Os comandos a seguir não devem ser mudados em nenhuma situação.
+
+\begin{document}
+%
+%% Define a numeração em romanos.
+\pagenumbering{roman}
+%
+%% Gera a folha de título.
+\geraTitulo
+%
+%% Gera a folha de rosto.
+\folhaDeRosto
+%
+%% Gera a folha de rosto em inglês. 
+%\folhaDeRostoIngles
+%
+%% Escreva aqui o resumo do projeto em Português.
+
+\begin{resumo}
+
+Trata-se do relatório final do projeto de pesquisa de iniciação científica que compreende os trabalhos iniciados em março de 2021 até o final de fevereiro de 2022. O projeto visa estudar a exibição de objetos 3D em óculos inteligentes (\textit{Smart glasses}) com realidade aumentada, que podem servir como um dispositivo auxiliar para aplicações cirúrgicas. Para isso, pretende-se conceituar as relações entre visão computacional e computação gráfica no campo da realidade aumentada. Com o apoio do Laboratório Aeronáutico de Tecnologias (AeroTech), estudaremos uma forma de elaborar uma aplicação que sobreponha a cabeça de um paciente com um modelo 3D indicando pontos de implantação de eletrodos durante o procedimento neurocirúrgico orientado por estereoeletroencefalografia (\textit{SEEG}). 
+
+  \palavraschaves{\textit{Smart glasses}, Aplicação cirúrgica, Visão computacional, Realidade aumentada}
+  
+\end{resumo}
+
+ \clearpage
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+%
+%% Define a numeração em arábicos.
+\pagenumbering{arabic}
+%
+%% Corpo do texto. 
+%% Para melhor organização do texto, coloque cada capítulo em um arquivo separado.
+%
+%% Capítulo com características propostas no projeto de pesquisa
+\input{1-Resumo}
+%
+%% Capítulo com os Realizações feitas no período
+\input{2-Realizacoes}
+%
+%% Capítulo com o Planejamento para o próximo período.
+\input{3-Planejamento}
+%
+%% Capítulo com Participação de eventos.
+\input{4-Eventos}
+%
+%% Capítulo com Outros apoios.
+%\input{outrosapoios.tex}
+
+%% Referências bibliográficas
+\printbibliography[heading=bibintoc, title={Referências bibliográficas} ]
+%% Fim do documento
+\end{document}
