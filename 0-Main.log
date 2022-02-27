@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.27)  27 FEB 2022 18:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.27)  27 FEB 2022 19:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Data/Codes/final_fapesp/0-Main.tex
-(d:/Data/Codes/final_fapesp/0-Main.tex
+**d:/Data/Codes/final_fapesp_2022/0-Main.tex
+(d:/Data/Codes/final_fapesp_2022/0-Main.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2021-11-22> (projetoFAPESP.cls
 Document Class: projetoFAPESP Classe para modelo de projeto para FAPESP
@@ -1236,14 +1236,14 @@ Package logreq Info: Writing requests to '0-Main.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  26699 strings out of 478659
- 472185 string characters out of 2845446
- 1250406 words of memory out of 3000000
+ 472275 string characters out of 2845446
+ 1250491 words of memory out of 3000000
  44321 multiletter control sequences out of 15000+600000
  481388 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,11n,152p,974b,5896s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 100i,11n,152p,979b,5896s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_dhi6qf.enc}{C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_tlukpt.enc}{C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}<C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineMT.pfb><C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTBI.pfb><C:/Users/Alessa/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb>
-Output written on 0-Main.pdf (10 pages, 3172188 bytes).
+Output written on 0-Main.pdf (10 pages, 3187494 bytes).
 PDF statistics:
  201 PDF objects out of 1000 (max. 8388607)
  32 named destinations out of 1000 (max. 500000)
