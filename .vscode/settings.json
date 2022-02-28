@@ -15,5 +15,15 @@
         "*.run": true,
         "*.synctex.gz": true
     },
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "cSpell.language": "en,pt,pt-BR",
+    "cSpell.words": [
+        "estereoeletroencefalografia",
+        "Mediapipe",
+        "Moverio",
+        "Sceneform",
+        "SEEG",
+        "Udemy",
+        "Vuforia"
+    ]
 }

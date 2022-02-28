@@ -1,12 +1,12 @@
 \chapter{Realizações}\label{chp:realizacoes}
 
-\section{Estudos sobre desenvolvimento Android}
+\section{Estudos em desenvolvimento Android Studio}
 
-O desenvolvimento de aplicativos para \textit{Android} foi estudado nos primeiros meses da pesquisa. Nessa parte do projeto, a pesquisa teve aspecto mais técnico, que foi necessário para a programação das futuras aplicações que estariam por vir. A \textit{IDE} (ambiente de desenvolvimento integrado) utilizada foi o \textit{Android Studio}, que foi sugerida pelo curso adquirido da \textit{Udemy} \cite{udemy}.
+O desenvolvimento de aplicativos para \textit{Android} foi estudado nos primeiros meses da pesquisa. Nessa parte do projeto, a pesquisa teve um aspecto mais técnico, que foi necessário para a programação das futuras aplicações que estariam por vir. A \textit{IDE} (ambiente de desenvolvimento integrado) utilizada foi o \textit{Android Studio}, que foi sugerida pelo curso adquirido da \textit{Udemy} \cite{udemy}.
 
-Após as primeiras semanas de aprendizado \textit{Android}, foi iniciado uma pesquisa sobre o desenvolvimento de aplicativos voltados a realidade aumentada. Antes ir diretamente nisso, uma interessante teste foi realizado com \textit{OpenCV} para \textit{Android} \cite{opencv}. Consistiu em realizar as primeira manipulações da imagem da câmera. A experiência foi proveitosa para o aprendizado da integração de ferramentas externas ao projeto padrão da plataforma e que, ademais, será feito muitas vezes até a conclusão da pesquisa.
+Após as primeiras semanas de aprendizado \textit{Android}, foi iniciado uma pesquisa sobre o desenvolvimento de aplicativos voltados a realidade aumentada. Porém, antes de irmos diretamente nisso, um interessante teste foi realizado com \textit{OpenCV},  que consistiu em realizar as primeira manipulações das imagens da câmera \cite{opencv}. A experiência foi proveitosa para o aprendizado da integração de ferramentas externas ao projeto padrão da plataforma e que, ademais, será feito muitas vezes até a conclusão da pesquisa.
 
-A primeira biblioteca de realidade aumentada a ser testada foi o \textit{Google Sceneform} \cite{Sceneform}. Muitos problemas foram encontrados na integração dos \textit{plugins} com o \textit{Android Studio}, pois este precisava estar em uma versão antiga específica para funcionar normalmente. Após a instalação, foi possível ver a primeira projeção em realidade aumentada em um simulador de \textit{smartphone} no computador (figura \ref{fig:sceneform-sim}). Restava testar o aplicativo para um \textit{smartphone} real, porém o afastamento dos integrantes do laboratório pela pandemia, e a falta de dispositivos compatíveis à minha disposição, causaram um atraso nos testes. Felizmente, foi gerado um arquivo que permite a instalação à distância e o aplicativo funcionou com sucesso nos celulares da equipe (figura \ref{fig:sceneform-real}).
+A primeira biblioteca de realidade aumentada a ser testada foi o \textit{Google Sceneform} \cite{Sceneform}. Muitos problemas foram encontrados na integração dos \textit{plugins} com o \textit{Android Studio}, pois este precisava estar em uma versão antiga específica para funcionar. Após a instalação, foi possível ver a primeira projeção em realidade aumentada em um simulador de \textit{smartphone} no computador (figura \ref{fig:sceneform-sim}). Restava testar o aplicativo para um \textit{smartphone} real, porém o afastamento dos integrantes do laboratório pela pandemia, e a falta de dispositivos compatíveis à minha disposição, causaram um atraso nos testes. Felizmente, foi gerado um arquivo que permite a instalação à distância e o aplicativo funcionou com sucesso nos celulares da equipe (figura \ref{fig:sceneform-real}).
 
 \begin{figure}[ht]
 \centering
@@ -26,17 +26,16 @@ A primeira biblioteca de realidade aumentada a ser testada foi o \textit{Google 
     \label{fig:sceneform-tests}
 \end{figure}
 
-Prosseguindo os estudos de aplicativos AR, percebemos que os problemas de versão tidos com o \textit{Sceneform} estavam sendo reparados pelo \textit{Google}, porém com um novo nome: \textit{Google ARCore Services} \cite{arcore-googleplay}. A proposta é que uma biblioteca seja instalada no celular para que os aplicativos terem acesso, trazendo a vantagem da redução do tamanho das aplicações produzidas. No entanto, somente uma lista restrita de \textit{smartphones} modernos podem instalar essa biblioteca, a justificativa dos desenvolvedores é a compatibilidade com o sistema (ou \textit{API}) \cite{arcore-list}.
+Prosseguindo os estudos de aplicativos AR, percebemos que os problemas de versão tidos com o \textit{Sceneform} estavam sendo reparados pelo \textit{Google}e adaptados em um novo programa: \textit{Google ARCore Services} \cite{arcore-googleplay}. Sua proposta é que uma biblioteca seja instalada no celular para que os aplicativos tenham acesso, trazendo a vantagem da redução do tamanho das aplicações produzidas. No entanto, somente uma lista restrita de \textit{smartphones} modernos podem instalar essa biblioteca, a justificativa dos desenvolvedores é a compatibilidade com o sistema \cite{arcore-list}.
 
 Seguido disso, durante a pesquisa foi encontrado uma nova ideia \textit{open-source}, também do \textit{Google}, chamado \textit{Mediapipe}, que tinha a proposta de entregar muitas ferramentas de visão computacional com ML (\textit{machine learning}) integrado \cite{mediapipe-docs}. O projeto foi iniciado em julho de 2019, e tem ganhado mais popularidade por ser gratuito, multi-plataforma e facilitar muito a aplicação de ML para \textit{Android}, \textit{iOS}, e PC. No momento da descoberta, não era conhecido a compatibilidade do \textit{Mediapipe} com \textit{API} antigas de \textit{Android} e muito menos o seu comportamento em óculos de realidade aumentada, por isso, a ideia foi reservada.
 
 \begin{description}
    \item Um sumário das opções testadas com breves comentários abaixo:
    \item[\textit{Google Sceneform}] É um \textit{plugin} para \textit{Android Studio} que introduz muitas ferramentas para o desenvolvimento de aplicativos AR. Funciona somente em \textit{Android} com a \textit{API} 24 ou superior. Seu projeto foi arquivado em meados de 2020. 
-   \item[\textit{Google ARCore Services}] Pode se considerar o sucessor das ideias do \textit{Sceneform}. Ele fornece uma biblioteca de ferramentas modernas de AR e atualizações frequentes. Funciona somente em uma lista estrita de \textit{smartphones} modernos. 
+   \item[\textit{Google ARCore Services}] Pode se considerar o sucessor das ideias do \textit{Sceneform}. Ele fornece uma biblioteca de ferramentas sofisticadas para AR e atualizações frequentes. Funciona somente em uma lista estrita de \textit{smartphones} modernos. 
    \item[\textit{Mediapipe}] Fornece uma grande quantidade de ferramentas baseadas em \textit{Machine Learning} para visão computacional. Projeto iniciado em junho de 2019 e ganhando mais força recentemente. Pela recente criação, não é conhecido seu comportamento em \textit{API} antigas (28 ou anterior).
 \end{description}
-
 
 % \begin{figure}[ht]
 % \centering
@@ -56,7 +55,7 @@ Seguido disso, durante a pesquisa foi encontrado uma nova ideia \textit{open-sou
 %         \centering
 %         \includegraphics[width=.95\textwidth]{figuras/PaperCarAR.png}
 %         \caption{Aplicativo de exemplo fornecido pela \textit{EPSON}}
-%         \label{fig:papercar}
+%         \label{fig:papercarr}
 %     \end{subfigure}
 %     \begin{subfigure}{0.45\textwidth}
 %         \includegraphics[width=.95\linewidth]{figuras/VCranium.png}
@@ -67,8 +66,33 @@ Seguido disso, durante a pesquisa foi encontrado uma nova ideia \textit{open-sou
 %     \label{fig:historico}
 % \end{figure}
 
+O que podemos concluir do desenvolvimento de aplicações em realidade aumentada com \textit{Android Studio} é que mesmo existindo ferramentas robustas de criação de \textit{apps} em AR, eles são restritos às novas versões de \textit{Android}, que por sua vez, estão presentes somente em dispositivos de nova geração, i.e, de lançamento posteriores a 2018. Por fim, a incompatibilidade das bibliotecas com o sistema e a construção dos óculos AR foram os motivos para a procura de um novo ambiente de desenvolvimento, que seja mais versátil e comporte bem com os recursos do \textit{Moverio BT-350}.
 
 \section{Estudos de desenvolvimento Unity}
+
+\textit{Unity} é uma plataforma voltada para o desenvolvimento de jogos em múltiplas plataformas, sendo o \textit{Android} uma delas. Além disso, a USP dá acesso a múltiplos recursos na plataforma para universitários. A documentação da \textit{EPSON} forneceu um programa de exemplo para \textit{Unity} que pode reconhecer um certo carrinho de papel e sobrepor com animações em AR.
+
+Foi sugerido a impressão e a montagem do carrinho de papel pela documentação, porém, como os óculos possuem somente uma \textit{webcam} simples para a detecção, supomos que ele não pode diferenciar o carrinho real de uma fotografia do carrinho, então, ele funcionaria normalmente. De fato, isso ocorreu e o teste foi registrado nas figuras \ref{fig:papercar-stl} e \ref{fig:papercar-ar}.
+
+\begin{figure}[ht]
+    \centering
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\textwidth]{figuras/PaperCar.png}
+            \caption{Modelo virtual do carrinho de papel}
+            \label{fig:papercar-stl}
+        \end{subfigure}
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\textwidth]{figuras/PaperCarAR.png}
+            \caption{Sobreposição em AR com \textit{Moverio}}
+            \label{fig:papercar-ar}
+        \end{subfigure}
+        \caption{Resultados adquiridos dos testes da documentação \textit{Moverio} np \textit{Unity}. Fonte: Autor.}
+        \label{fig:papercar-tests}
+\end{figure}
+
+Este foi o único programa disponibilizado na documentação, o projeto foi elaborado no \textit{Unity} 2017, mesmo com alguns alertas de incompatibilidade, o projeto pôde ser compilado com êxito e funcionou nos óculos. Novamente, a falta do suporte da \textit{EPSON} 
 
 \section{Arquitetura do sistema}
 
