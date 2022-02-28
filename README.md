@@ -60,3 +60,6 @@ Uma sugestão de deixar a visualização melhor ainda é deixar o documento aber
 }
  ```
 
+O resultado fica assim:
+
+![alt text](https://i.imgur.com/Emi620f.png)
