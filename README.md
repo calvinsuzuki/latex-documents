@@ -36,6 +36,8 @@ para nao atrasar a compilação.
 Após isso, não é mais necessário apertar o botão de compilação, o sistema faz a atualização automática
 ``.pdf`` apenas ao apertar ``Ctrl + S``.
 
+![alt text](https://i.imgur.com/oKJ7FWg.gif)
+
 Uma sugestão de deixar a visualização melhor ainda é deixar o documento aberto simultâneamente
  em uma aba na lateral e usar as configurações: 
 
@@ -62,4 +64,8 @@ Uma sugestão de deixar a visualização melhor ainda é deixar o documento aber
 
 O resultado fica assim:
 
-![alt text](https://i.imgur.com/Emi620f.png)
+![alt text](https://i.imgur.com/3g4fOhJ.png)
+
+## Atalhos LaTeX
+
+Diversos atalhos estão disponíveis nesse *plugin*, não há motivo para listar comandos aqui, cheque o *README* do [**repositório**](https://github.com/James-Yu/LaTeX-Workshop) que está super didático.
