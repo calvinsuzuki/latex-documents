@@ -1,55 +1,62 @@
-# VCranium-unity
-
-## Objetivo
-
-Elaborar um programa que estabeleça comunicação entre um computador e os óculos **EPSON BT-350** (*Android 5.1*) 
-
-## Planejamento da arquitetura do sistema
-
-![alt text](https://i.imgur.com/zGdNIbB.png)
+# Relatório final Fapesp 2022
 
 ## Instalação
 
- - *Unity 2020.3.28f1*
- - *Python 3*
- 	- ``pip install numpy``
- 	- ``pip install opencv-contrib-python``
- - Android Studio: Compilador de *API 22* e *Compilation tools* (*deprecated*)
+- Instalar [**Visual Studio Code**](https://ninite.com/vscode/).
+	- Adicionar o *plugin* [**LaTeX Workshop**](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
+- Instalar [**MiKTeX**](https://miktex.org/download).
+- Instalar [**Strawberry Perl**](https://strawberryperl.com/).
 
-## VSCode Setup
+## MiKTeX Setup
 
-Uma alternativa de deixar o desenvolvimento do projeto mais leve é evitar a instalação padrão do **Visual Studio 2019** que ocupa um espaço considerável em disco e se apresenta bem lento em atividades básicas.
+Após a instalação do *MiKTeX*, abra o *MiKTeX* *Console* no seu computador. 
 
-Basta dar um *uncheck* no **Visual Studio 2019** ao instalar o **Unity 2020**, e instalar o [**Visual Studio Code**](https://ninite.com/vscode/).
+Clique no botão ``Check for updates`` e instale todas as atualizações na aba *Update*.
 
-Após a instalação, configure o **Unity** para usar o **VSCode** como *External Script Editor* em *Edit > Preferences > External Tools*
+![alt text](https://i.imgur.com/LKoJxyI.png)
 
-![alt text](https://i.imgur.com/PGEBgrU.png)
+## Compilação do documento no VSCode
 
-## Otimização do VSCode
+Ao primeiro momento, o projeto deve parecer assim no *VSCode*
 
-A comunidade criou (e continua criando) extensões para o **VSCode** que agilizam a elaboração de *scripts* para o desenvolvedores de **Unity**
+![alt text](https://i.imgur.com/VgpmmIy.png)
 
-Uma lista de extensões foi sugerida pela documentação da [*Microsoft*](https://code.visualstudio.com/docs/other/unity). São elas:  
- - [Debugger for Unity](https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug)
- - [Unity Tools](https://marketplace.visualstudio.com/items?itemName=Tobiah.unity-tools)
- - [Unity Code Snippets](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)
+A primeira compilação demora bastante (cerca de 1 a 2 minutos) 
+e pode ser reparada na parte de baixo do *VSCode* com a palavra *Build* e uma animação de um carregamento.
 
-# Troubleshoot
+![alt text](https://i.imgur.com/LEV9cLd.png)
 
-### Caso os objetos na tela estejam brancos e não funcionais, considere: 
- - Colocar os scripts em cada GameObject novamente (drag n drop), acontece por causa da falta dos arquivos \*.meta
- 
-### Se houver problema na visualização das caixas de texto do projeto:
- - Instalar e incluir o TMP (TextMeshPro) no projeto pelo Unity
- 	- Window > TextMeshPro > Import TMP Essential Resources
+Após a compilação, as pastas devem ficar assim:
 
-### Em erros de compilação, certifique-se que:
- - Android Studio está instalado e iniciou ao menos um projeto com ele. Isso termina de instalar todas as dependencias do JDK.
+![alt text](https://i.imgur.com/HVBMMUx.png)
 
-### Em problemas de compilação em um dispositivo móvel:
- - DESINSTALAR os .apk antigos antes de compilar
- - Abrir o ADB tool e usar o comando: ``abd devices``
-	- Verifique se ele está conectado, se não, verifique se o modo depuração está ativado e se o USB está devidamente conectado
-	- O status do dispositivo deve estar ONLINE, se estiver OFFLINE, desconecte, reinicie todos os dispositivos e conecte novamente. Se persistir o problema, então verifique se os drivers estão reconhecendo a conexão e se o ADB está funcionando com outros celulares.
+Infelizmente, diversos arquivos temporários são criados, mas é **sugerido** que não os deletemos
+para nao atrasar a compilação.
+
+Após isso, não é mais necessário apertar o botão de compilação, o sistema faz a atualização automática
+``.pdf`` apenas ao apertar ``Ctrl + S``.
+
+Uma sugestão de deixar a visualização melhor ainda é deixar o documento aberto simultâneamente
+ em uma aba na lateral e usar as configurações: 
+
+ ```json
+ {
+    "files.exclude": {
+        "*.aux": true,
+        "*.bbl": true,
+        "*.bcf": true,
+        "*.blg": true,
+        "*.fdb_latexmk": true,
+        "*.fls": true,
+        "*.gitignore": true,
+        "*.log": true,
+        "*.out": true,
+        "*.bgl": true,
+        "*.run.xml": true,
+        "*.toc": true,
+        "*.run": true,
+        "*.synctex.gz": true
+    }
+}
+ ```
 

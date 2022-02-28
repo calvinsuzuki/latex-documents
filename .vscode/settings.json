@@ -1,0 +1,19 @@
+{
+    "files.exclude": {
+        "*.aux": true,
+        "*.bbl": true,
+        "*.bcf": true,
+        "*.blg": true,
+        "*.fdb_latexmk": true,
+        "*.fls": true,
+        "*.gitignore": true,
+        "*.log": true,
+        "*.out": true,
+        "*.bgl": true,
+        "*.run.xml": true,
+        "*.toc": true,
+        "*.run": true,
+        "*.synctex.gz": true
+    },
+    "editor.wordWrap": "on"
+}
