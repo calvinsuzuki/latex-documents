@@ -1,50 +1,9 @@
-%% Escolha: Portugues ou Ingles.
 \documentclass[Portugues]{projetoFAPESP}
 
-%% Adicione o arquivo com as referências bibliográficas
 \addbibresource{bibliografia.bib}
-\usepackage{indentfirst}
-%% Página de título
-%% Observação: As definições que aparecem a seguir comporão a
-%%             página de título e a folha de rosto.
-%% Define o nome da universidade onde o projeto será desenvolvido.
-\universidade{Universidade de São Paulo}
-\Proj{2020/15835-4}
-%
-%% Define o nome da faculdade onde o projeto será desenvolvido.
-\faculdade{Escola de Engenharia de São Carlos}
-%
-%% Define o título do projeto.
-\titulo{Posicionamento e exibição de imagens 3D utilizando óculos de realidade aumentada para aplicação cirúrgica}
-%
-%% Define o título do projeto em inglês.
-\tituloIngles{Positioning and view of 3D images using a augmented reality glasses to surgery application}
-%
-%% Define a agencia de Fomento e a abreviatura. O primeiro argumento é o 
-%% nome por extenso e o segundo a abreviatura.
-%% Se não houver abreviatura, deixe o segundo argumento vazio.
-\agFomento{Fundação de Amparo à Pesquisa do Estado de São Paulo}{FAPESP}
-%
-%% Define a modalidade de projeto. 
-%% Pode ser temático, regular, iniciação cientifica, mestrado, doutorado etc.
-\modalidadeProjeto{de auxílio à iniciação científica}
-%
-%% Define o autor do projeto e seu título (e.g. Dr.).
-\autor{Glauco Augusto de Paula Caurin}{Dr.}
-\Coorientador{Paulo Henrique Polegato}{}
-%
-%% Define o nome do beneficiário, se for o caso de bolsa. Esse comando é opcional.
-\beneficiario{Calvin Suzuki de Camargo}
-%
-%
-%% Define o período da vigência do Projeto.
-%% Os parâmetros são dia, mês e ano. Use apenas números.
-\inicioPeriodoVigencia{01}{03}{2021}
-\periodoRelatorio{28}{02}{2022}
-\fimPeriodoVigencia{28}{02}{2022}
-%
-%% Define a cidade onde o projeto será desenvolvido.
-\cidade{São Carlos}
+
+\setlength{\parindent}{4em}
+\setlength{\parskip}{0.77em}
 
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -55,30 +14,34 @@
 \usepackage{float}
 \usepackage{comment}
 \usepackage{subcaption}
-%\usepackage[table,xcdraw]{xcolor}
- 
-\setlength{\parindent}{4em}
-\setlength{\parskip}{0.77em}
-%\renewcommand{\baselinestretch}{2.0}
-%
+\usepackage{indentfirst}
+
 %% Página de título
-%% Observação: Os comandos a seguir não devem ser mudados em nenhuma situação.
+\universidade{Universidade de São Paulo}
+\faculdade{Escola de Engenharia de São Carlos}
+\cidade{São Carlos}
+
+\titulo{Posicionamento e exibição de imagens 3D utilizando óculos de realidade aumentada para aplicação cirúrgica}
+
+\Proj{2020/15835-4}
+\agFomento{Fundação de Amparo à Pesquisa do Estado de São Paulo}{FAPESP}
+\modalidadeProjeto{de auxílio à iniciação científica}
+
+\professor{Glauco Augusto de Paula Caurin}{Dr.}
+\Coorientador{Paulo Henrique Polegato}{}
+\beneficiario{Calvin Suzuki de Camargo}
+
+\inicioPeriodoVigencia{01}{03}{2021}
+\periodoRelatorio{28}{02}{2022}
+\fimPeriodoVigencia{28}{02}{2022}
 
 \begin{document}
-%
-%% Define a numeração em romanos.
+
 \pagenumbering{roman}
-%
-%% Gera a folha de título.
+
 \geraTitulo
-%
-%% Gera a folha de rosto.
+
 \folhaDeRosto
-%
-%% Gera a folha de rosto em inglês. 
-%\folhaDeRostoIngles
-%
-%% Escreva aqui o resumo do projeto em Português.
 
 \begin{resumo}
 
@@ -88,33 +51,22 @@ Trata-se do relatório final do projeto de pesquisa de iniciação científica q
   
 \end{resumo}
 
- \clearpage
+\clearpage
 \tableofcontents
 \thispagestyle{empty}
 \clearpage
-%
-%% Define a numeração em arábicos.
-\pagenumbering{arabic}
-%
-%% Corpo do texto. 
-%% Para melhor organização do texto, coloque cada capítulo em um arquivo separado.
-%
-%% Capítulo com características propostas no projeto de pesquisa
-\input{1-Resumo}
-%
-%% Capítulo com os Realizações feitas no período
-\input{2-Realizacoes}
-%
-%% Capítulo com o Planejamento para o próximo período.
-\input{3-Planejamento}
-%
-%% Capítulo com Participação de eventos.
-\input{4-Eventos}
-%
-%% Capítulo com Outros apoios.
-%\input{outrosapoios.tex}
 
-%% Referências bibliográficas
+\pagenumbering{arabic}
+
+\input{1-Resumo}
+
+\input{2-Realizacoes}
+
+\input{3-Planejamento}
+
+\input{4-Eventos}
+
+% Referências bibliográficas
 \printbibliography[heading=bibintoc, title={Referências bibliográficas} ]
-%% Fim do documento
+
 \end{document}

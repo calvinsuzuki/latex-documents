@@ -1,4 +1,4 @@
-# Relatório final Fapesp 2022
+# LaTeX para VSCode
 
 ## Instalação
 
