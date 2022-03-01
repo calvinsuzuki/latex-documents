@@ -70,7 +70,7 @@ O que podemos concluir do desenvolvimento de aplicações em realidade aumentada
 
 \section{Estudos de desenvolvimento Unity}
 
-\textit{Unity} é uma plataforma voltada para o desenvolvimento de jogos em múltiplas plataformas, sendo o \textit{Android} uma delas. Além disso, a USP dá acesso a múltiplos recursos na plataforma para universitários. A documentação da \textit{EPSON} forneceu um programa de exemplo para \textit{Unity} que pode reconhecer um certo carrinho de papel e sobrepor com animações em AR.
+\textit{Unity} é uma plataforma voltada para o desenvolvimento de jogos em múltiplas plataformas, sendo o \textit{Android} uma delas, e com o apoio da USP, temos acesso a mais recursos na plataforma \cite{UnityOficial}. A documentação da \textit{EPSON} forneceu um programa de exemplo para \textit{Unity} que pode reconhecer um certo carrinho de papel e sobrepor com animações em AR.
 
 Foi sugerido a impressão e a montagem do carrinho de papel pela documentação, porém, como os óculos possuem somente uma \textit{webcam} simples para a detecção, supomos que ele não pode diferenciar o carrinho real de uma fotografia do carrinho, então, ele funcionaria normalmente. De fato, isso ocorreu e o teste foi registrado nas figuras \ref{fig:papercar-stl} e \ref{fig:papercar-ar}.
 
@@ -94,7 +94,29 @@ Foi sugerido a impressão e a montagem do carrinho de papel pela documentação,
 
 Este foi o único programa disponibilizado na documentação, o projeto foi elaborado no \textit{Unity} 2017, mesmo com alguns alertas de incompatibilidade, o projeto pôde ser compilado com êxito e funcionou nos óculos. Novamente, a falta do suporte da \textit{EPSON} deixou incerto se era uma boa opção construir um aplicativo somente baseado na documentação disponível. Por isso, iniciamos novamente uma pesquisa sobre as ferramentas para suporte de AR nessa plataforma.
 
-O \textit{Vuforia} foi o primeiro \textit{plugin} a ser testado no ambiente do \textit{Unity}, ele tem a opção de integrar uma variedade de novos \textit{targets}, de imagens até cilindros e outras formas 3D. 
+O \textit{Vuforia} foi o primeiro \textit{plugin} a ser testado no ambiente do \textit{Unity} \cite{Vuforia}. Atualmente, ele apresenta mais opções rastreio para AR, mas no momento em que foi encontrado pela pesquisa, as opções eram de usar imagens e algumas formas 3D como marcadores para suas projeções. Foi testado a detecção de imagem com um pedaço da logo da \textit{Coca-cola\texttrademark} como alvo, a figura \ref{fig:vuforia-tests} ilustra os resultados.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.85\linewidth]{figuras/Vuforia.png}
+    \caption{Testes com diferentes modelos de diferentes complexidades, constatando performance acima de 15 quadros por segundo em todos os casos. Fonte: Autor.}
+    \label{fig:vuforia-tests}
+\end{figure}
+
+As formas de detecção tridimensionais não eram compatíveis com a detecção da posição da cabeça de um paciente, por isso esse recurso não foi testado. O \textit{Vuforia} é uma ferramenta que trabalha com \textit{Android} de \textit{API} 23 ou superior, infelizmente, também incompatível com o \textit{Moverio BT-350} que possui uma \textit{API} 22 e sem chances de atualização. Outras ferramentas foram encontradas como o \textit{Wikitude\texttrademark} que também era para \textit{API} 23 \cite{wikitudes}, porém uma outra ferramenta denominada \textit{ARFoundation} que estima a posição da face humana chamou a atenção por termos a oportunidade de criar uma demonstração da ideia final do projeto nos óculos \cite{arfoundation-docs}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.65\linewidth]{figuras/VCranium.png}
+    \caption{A primeira imagem foi o primeiro teste com a projeção de um cubo na região da testa. A segunda já detalha a superfície estimada da face e a projeção do cérebro. Fonte: Autor.}
+    \label{fig:arfoundation}
+\end{figure}
+
+A instalação do \textit{ARFoundation} foi feita no \textit{Unity 2018} e apresentou compatibilidade com celulares de \textit{API 28} ou superior. Os testes consistiram em tentar utilizar a posição encontrada pelo \textit{plugin} para projetar um objeto em referência desses dados. A aplicação teve um ótimo resultado e foi possível apresentar o objetivo principal para professores e médicos da área pela aproximação visual dos testes com o resultado final esperado, visto na figura \ref{fig:arfoundation}. Nesse momento, criamos um nome fantasia para o projeto: \textit{VCranium}.
+
+Retornando ao objetivo prático de encontrar um meio de desenvolver o projeto, concluímos que temos muitas opções disponíveis de desenvolvimento, mas sem muito suporte para o \textit{Moverio BT-350}. O \textit{Unity} foi escolhido para seguir a pesquisa pela sua facilidade de elaboração de cenários tridimensionais e compatibilidade com o sistema de outros óculos de AR do mercado. Dessa maneira, podemos garantir que os próximos trabalhos que serão desenvolvidos, não dependem do equipamento que temos hoje, i.e, se futuramente precisarmos trocar para um óculos mais moderno, uma adaptação será feita e aproveitaremos o material produzido até o momento.
+
+Dado o histórico de testes do projeto, foi decidido prosseguir sem depender de \textit{plugins} e bibliotecas \textit{closed-source}, isso garantirá um maior controle do \textit{software} elaborado e também exigirá um estudo mais aprofundado de como os algoritmos de visão computacional funcionam. Essa mudança trará um contato maior com problemas discriminados de programação, auxiliando o processo do estudo e apresentação de dúvidas em seminário para os estudantes e professores dessa área de pesquisa na universidade.
 
 \section{Arquitetura do sistema}
 
