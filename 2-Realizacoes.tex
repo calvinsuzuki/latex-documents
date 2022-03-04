@@ -70,9 +70,9 @@ O que podemos concluir do desenvolvimento de aplicações em realidade aumentada
 
 \section{Estudos de desenvolvimento Unity}
 
-\textit{Unity} é uma plataforma voltada para o desenvolvimento de jogos em múltiplas plataformas, sendo o \textit{Android} uma delas, e com o apoio da USP, temos acesso a mais recursos na plataforma \cite{UnityOficial}. A documentação da \textit{EPSON} forneceu um programa de exemplo para \textit{Unity} que pode reconhecer um certo carrinho de papel e sobrepor com animações em AR.
+\textit{Unity} é um programa voltado para o desenvolvimento de jogos em múltiplas plataformas, sendo o \textit{Android} uma delas, e com o apoio da USP, temos acesso a mais recursos para os projetos desenvolvidos nele \cite{UnityOficial}. A documentação da \textit{EPSON} forneceu um programa de exemplo para \textit{Unity} que pode reconhecer um certo carrinho de papel e sobrepor com animações em AR.
 
-Foi sugerido a impressão e a montagem do carrinho de papel pela documentação, porém, como os óculos possuem somente uma \textit{webcam} simples para a detecção, supomos que ele não pode diferenciar o carrinho real de uma fotografia do carrinho, então, ele funcionaria normalmente. De fato, isso ocorreu e o teste foi registrado nas figuras \ref{fig:papercar-stl} e \ref{fig:papercar-ar}.
+Foi sugerido a impressão e a montagem do carrinho de papel pela documentação, porém, como os óculos possuem somente uma \textit{webcam} simples para a detecção, supomos que ele não pode diferenciar o carrinho real de uma fotografia do carrinho, então, ele funcionaria normalmente com uma imagem do computador. De fato, isso ocorreu e o teste foi registrado nas figuras \ref{fig:papercar-stl} e \ref{fig:papercar-ar}.
 
 \begin{figure}[ht]
     \centering
@@ -88,13 +88,13 @@ Foi sugerido a impressão e a montagem do carrinho de papel pela documentação,
             \caption{Sobreposição em AR com \textit{Moverio}}
             \label{fig:papercar-ar}
         \end{subfigure}
-        \caption{Resultados adquiridos dos testes da documentação \textit{Moverio} np \textit{Unity}. Fonte: Autor.}
+        \caption{Resultados adquiridos dos testes da documentação \textit{Moverio} no \textit{Unity}. Fonte: Autor.}
         \label{fig:papercar-tests}
 \end{figure}
 
 Este foi o único programa disponibilizado na documentação, o projeto foi elaborado no \textit{Unity} 2017, mesmo com alguns alertas de incompatibilidade, o projeto pôde ser compilado com êxito e funcionou nos óculos. Novamente, a falta do suporte da \textit{EPSON} deixou incerto se era uma boa opção construir um aplicativo somente baseado na documentação disponível. Por isso, iniciamos novamente uma pesquisa sobre as ferramentas para suporte de AR nessa plataforma.
 
-O \textit{Vuforia} foi o primeiro \textit{plugin} a ser testado no ambiente do \textit{Unity} \cite{Vuforia}. Atualmente, ele apresenta mais opções rastreio para AR, mas no momento em que foi encontrado pela pesquisa, as opções eram de usar imagens e algumas formas 3D como marcadores para suas projeções. Foi testado a detecção de imagem com um pedaço da logo da \textit{Coca-cola\texttrademark} como alvo, a figura \ref{fig:vuforia-tests} ilustra os resultados.
+O \textit{Vuforia} foi o primeiro \textit{plugin} a ser testado no ambiente do \textit{Unity} \cite{Vuforia}. Atualmente, ele apresenta mais opções rastreio para AR, mas no momento em que foi experimentado pela pesquisa as opções eram de usar imagens e algumas formas 3D como marcadores para suas projeções. Foi testado a detecção de imagem com um pedaço da logo da \textit{Coca-cola\texttrademark} como alvo, a figura \ref{fig:vuforia-tests} ilustra os resultados.
 
 \begin{figure}[ht]
     \centering
@@ -108,11 +108,11 @@ As formas de detecção tridimensionais não eram compatíveis com a detecção 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=.65\linewidth]{figuras/VCranium.png}
-    \caption{A primeira imagem foi o primeiro teste com a projeção de um cubo na região da testa. A segunda já detalha a superfície estimada da face e a projeção do cérebro. Fonte: Autor.}
+    \caption{A primeira imagem foi o primeiro teste com a projeção de um cubo na região da testa. A segunda detalha a superfície estimada da face e a projeção do cérebro. Fonte: Autor.}
     \label{fig:arfoundation}
 \end{figure}
 
-A instalação do \textit{ARFoundation} foi feita no \textit{Unity 2018} e apresentou compatibilidade com celulares de \textit{API 28} ou superior. Os testes consistiram em tentar utilizar a posição encontrada pelo \textit{plugin} para projetar um objeto em referência desses dados. A aplicação teve um ótimo resultado e foi possível apresentar o objetivo principal para professores e médicos da área pela aproximação visual dos testes com o resultado final esperado, visto na figura \ref{fig:arfoundation}. Nesse momento, criamos um nome fantasia para o projeto: \textit{VCranium}.
+A instalação do \textit{ARFoundation} foi feita no \textit{Unity 2018} e apresentou compatibilidade com celulares de \textit{API 28} ou superior. Os testes consistiram em utilizar a posição da face encontrada pelo \textit{plugin} para projetar um objeto em referência desses dados. A aplicação teve um ótimo resultado e foi possível apresentar o objetivo principal para professores e médicos da área pela aproximação visual dos testes com o resultado final esperado, visto na figura \ref{fig:arfoundation}. Nesse momento, criamos um nome fantasia para facilitar as apresentações do projeto: \textit{VCranium}.
 
 Retornando ao objetivo prático de encontrar um meio de desenvolver o projeto, concluímos que temos muitas opções disponíveis de desenvolvimento, mas sem muito suporte para o \textit{Moverio BT-350}. O \textit{Unity} foi escolhido para seguir a pesquisa pela sua facilidade de elaboração de cenários tridimensionais e compatibilidade com o sistema de outros óculos de AR do mercado. Dessa maneira, podemos garantir que os próximos trabalhos que serão desenvolvidos, não dependem do equipamento que temos hoje, i.e, se futuramente precisarmos trocar para um óculos mais moderno, uma adaptação será feita e aproveitaremos o material produzido até o momento.
 
@@ -120,14 +120,16 @@ Dado o histórico de testes do projeto, foi decidido prosseguir sem depender de 
 
 \section{Elaboração do VCranium}
 
-Aqui podemos analisar com mais atenção os artigos da literatura e suas diferentes soluções para sistemas de realidade aumentada aplicados em cirurgias. O trabalho que mais auxiliou a pesquisa foi uma revisão literária aplicações em AR para neurocirurgias: \textit{"Enhancing Reality: A Systematic Review of Augmented Reality in Neuronavigation and Education"} \cite{enhancedvision}. Esse artigo faz uma breve apresentação da aplicabilidade de AR em ambiente cirúrgico e tabela as informações de doze pesquisas mostrando as patologias tratadas; descrição de método; e resultado da precisão da projeção em AR.
+\subsection{Inspiração bibliográfica}
+
+Aqui podemos analisar com mais atenção os artigos da literatura e suas diferentes soluções para sistemas de realidade aumentada aplicados em cirurgias. O trabalho que mais auxiliou a pesquisa foi uma revisão literária de aplicações em AR para neurocirurgias: \textit{"Enhancing Reality: A Systematic Review of Augmented Reality in Neuronavigation and Education"} \cite{enhancedvision}. Esse artigo faz uma breve apresentação da aplicabilidade de AR em ambiente cirúrgico e tabela as informações de doze pesquisas mostrando as patologias tratadas; descrição de método; e resultado da precisão da projeção em AR.
 
 Dentre as pesquisas descritas estava o artigo de Maruyama: \textit{Smart Glasses for Neurosurgical Navigation by Augmented Reality} \cite{Maruyama2018}. Sua equipe de pesquisadores construíram um sistema que utilizava os óculos \textit{Moverio BT-200}, um modelo que se assemelha muito com o que possuímos no laboratório, para auxiliar a visualização de tumores cerebrais em dois pacientes, além disso, foi também possível exibir a escalpe e os vasos do cérebro nos óculos.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=.65\linewidth]{figuras/Maruyama.png}
-    \caption{A primeira imagem foi o primeiro teste com a projeção de um cubo na região da testa. A segunda já detalha a superfície estimada da face e a projeção do cérebro. Fonte: Autor.}
+    \caption{(A) Duas câmeras para detectar movimento, (B) Marcadores para paciente, (C) Marcadores nos óculos, (D) Visualização nos óculos. Fonte: \cite{Maruyama2018}.}
     \label{fig:maruyama}
 \end{figure}
 
