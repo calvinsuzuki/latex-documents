@@ -4,7 +4,7 @@
 
 O desenvolvimento de aplicativos para \textit{Android} foi estudado nos primeiros meses da pesquisa. Nessa parte do projeto, a pesquisa teve um aspecto mais técnico, que foi necessário para a programação das futuras aplicações que estariam por vir. A \textit{IDE} (ambiente de desenvolvimento integrado) utilizada foi o \textit{Android Studio}, que foi sugerida pelo curso adquirido da \textit{Udemy} \cite{udemy}.
 
-Após as primeiras semanas de aprendizado \textit{Android}, foi iniciado uma pesquisa sobre o desenvolvimento de aplicativos voltados a realidade aumentada. Porém, antes de irmos diretamente nisso, um interessante teste foi realizado com \textit{OpenCV},  que consistiu em realizar as primeira manipulações das imagens da câmera \cite{opencv}. A experiência foi proveitosa para o aprendizado da integração de ferramentas externas ao projeto padrão da plataforma e que, ademais, será feito muitas vezes até a conclusão da pesquisa.
+Após as primeiras semanas de aprendizado \textit{Android}, foi iniciado uma pesquisa sobre o desenvolvimento de aplicativos voltados a realidade aumentada. Porém, antes de irmos diretamente nisso, um interessante teste foi realizado com \textit{OpenCV},  que consistiu em realizar a primeira manipulação das imagens da câmera \cite{opencv}. A experiência foi proveitosa para o aprendizado da integração de ferramentas externas ao projeto padrão da plataforma e que, ademais, será feito muitas vezes até a conclusão da pesquisa.
 
 A primeira biblioteca de realidade aumentada a ser testada foi o \textit{Google Sceneform} \cite{Sceneform}. Muitos problemas foram encontrados na integração dos \textit{plugins} com o \textit{Android Studio}, pois este precisava estar em uma versão antiga específica para funcionar. Após a instalação, foi possível ver a primeira projeção em realidade aumentada em um simulador de \textit{smartphone} no computador (figura \ref{fig:sceneform-sim}). Restava testar o aplicativo para um \textit{smartphone} real, porém o afastamento dos integrantes do laboratório pela pandemia, e a falta de dispositivos compatíveis à minha disposição, causaram um atraso nos testes. Felizmente, foi gerado um arquivo que permite a instalação à distância e o aplicativo funcionou com sucesso nos celulares da equipe (figura \ref{fig:sceneform-real}).
 
@@ -116,9 +116,22 @@ A instalação do \textit{ARFoundation} foi feita no \textit{Unity 2018} e apres
 
 Retornando ao objetivo prático de encontrar um meio de desenvolver o projeto, concluímos que temos muitas opções disponíveis de desenvolvimento, mas sem muito suporte para o \textit{Moverio BT-350}. O \textit{Unity} foi escolhido para seguir a pesquisa pela sua facilidade de elaboração de cenários tridimensionais e compatibilidade com o sistema de outros óculos de AR do mercado. Dessa maneira, podemos garantir que os próximos trabalhos que serão desenvolvidos, não dependem do equipamento que temos hoje, i.e, se futuramente precisarmos trocar para um óculos mais moderno, uma adaptação será feita e aproveitaremos o material produzido até o momento.
 
-Dado o histórico de testes do projeto, foi decidido prosseguir sem depender de \textit{plugins} e bibliotecas \textit{closed-source}, isso garantirá um maior controle do \textit{software} elaborado e também exigirá um estudo mais aprofundado de como os algoritmos de visão computacional funcionam. Essa mudança trará um contato maior com problemas discriminados de programação, auxiliando o processo do estudo e apresentação de dúvidas em seminário para os estudantes e professores dessa área de pesquisa na universidade.
+Dado o histórico de testes do projeto, foi decidido prosseguir sem depender de \textit{plugins} e bibliotecas \textit{closed-source}, isso garantirá um maior controle do \textit{software} elaborado e também exigirá um estudo mais aprofundado de como os algoritmos de visão computacional funcionam. Essa mudança trará um contato maior com problemas discretizados de programação, auxiliando o processo do estudo e apresentação de dúvidas em seminário para os estudantes e professores dessa área de pesquisa na universidade.
 
-\section{Arquitetura do sistema}
+\section{Elaboração do VCranium}
+
+Aqui podemos analisar com mais atenção os artigos da literatura e suas diferentes soluções para sistemas de realidade aumentada aplicados em cirurgias. O trabalho que mais auxiliou a pesquisa foi uma revisão literária aplicações em AR para neurocirurgias: \textit{"Enhancing Reality: A Systematic Review of Augmented Reality in Neuronavigation and Education"} \cite{enhancedvision}. Esse artigo faz uma breve apresentação da aplicabilidade de AR em ambiente cirúrgico e tabela as informações de doze pesquisas mostrando as patologias tratadas; descrição de método; e resultado da precisão da projeção em AR.
+
+Dentre as pesquisas descritas estava o artigo de Maruyama: \textit{Smart Glasses for Neurosurgical Navigation by Augmented Reality} \cite{Maruyama2018}. Sua equipe de pesquisadores construíram um sistema que utilizava os óculos \textit{Moverio BT-200}, um modelo que se assemelha muito com o que possuímos no laboratório, para auxiliar a visualização de tumores cerebrais em dois pacientes, além disso, foi também possível exibir a escalpe e os vasos do cérebro nos óculos.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.65\linewidth]{figuras/Maruyama.png}
+    \caption{A primeira imagem foi o primeiro teste com a projeção de um cubo na região da testa. A segunda já detalha a superfície estimada da face e a projeção do cérebro. Fonte: Autor.}
+    \label{fig:maruyama}
+\end{figure}
+
+\subsection{Arquitetura do Sistema}
 
 Para a definição de uma arquitetura adequada para o projeto foram analisados os exemplos que a literatura pôde nos dar como
 
