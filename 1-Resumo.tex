@@ -1,16 +1,29 @@
 \chapter{Resumo do projeto}\label{chp:resultadosEsparados}
 
+\section{Enunciado do problema}
+
+As cirurgias na medicina têm também o objetivo de causar a mínima agressão ao organismo do paciente, isso implica em um menor tempo de hospitalização; menor incidência de complicações pós-operatórias; menos dor; e recuperação mais rápida. Contudo, entre os diversos desafios de sua realização, a habilidade visual do médico, que envolve a capacidade de localizar e identificar os tecidos sensíveis, é essencial para redução dos danos ao paciente durante um procedimento cirúrgico, nos levando à questão: Como podemos auxiliar a visão do médico para aumentar a qualidade dessas operações? Para esse fim, um \textit{software} que informa e assiste o médico em tempo real durante a operação denota-se como um ótimo meio de aumentar as chances de sucesso dessas cirurgias.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.55\linewidth]{figuras/enunciado.png}
+    \caption{Exemplo da utilização de neuronavegador em cirurgia. O cirurgião precisa tirar os olhos do paciente e interpretar as imagens do monitor, impactando negativamente a performance do médico. Fonte: \cite{santacasa}.}
+    \label{fig:enunciado}
+\end{figure}
+
+Atualmente, \textit{softwares} auxiliares já são muito presentes no cotidiano de trabalho dos cirurgiões, entretanto, toma-se como exemplo os sistemas de neuronavegação, cuja função é exibir com precisão as estruturas do sistema nervoso do paciente. Entretanto, o médico, um profissional que foi treinado para ler esses dados, ainda precisa realizar um esforço na leitura da neuronavegação durante a cirurgia, colaborando para um maior tempo de operação e favorecendo a exaustão do profissional, de modo que aumente seu potencial de erros durante os procedimentos cirúrgicos (\ref{fig:enunciado}). Para isso, a tecnologia de realidade aumentada (\textit{AR}) oferece o potencial de reduzir essas limitações, em razão de que figuras tridimensionais podem sobrepor a visão do médico para facilitar a visualização e a localização dos objetivos da operação enquanto tem seus olhos direcionados ao paciente \cite{enhancedvision}.
+
 \section{Objetivo}
 
 Pretende-se exibir informações e posicionar modelos tridimensionais em uma região do espaço com \textit{AR}, de forma que facilite o acesso do cirurgião à informação durante a cirurgia; estudar e registrar a resposta dos equipamentos utilizados no quesito de qualidade gráfica e latência de resposta do sistema. Tudo isso, com o objetivo central de aumentar a proximidade do cirurgião com a tecnologia de \textit{AR} como apoio durante os procedimentos cirúrgicos.
 
 \section{Metodologia}
 
-Consiste na listagem de possíveis soluções, técnicas ou ferramentas; o estudo e a discussão sobre elas, em seguida, sua implementação. Paralelamente a isso, a busca bibliográfica é constantemente realizada com o objetivo de esclarecer dúvidas sobre os meios imaginados e discutidos com o orientador e coorientador. Essa busca dá ênfase nos resultados encontrados pelos artigos, o objetivo disto é caracterizar os prós e contras das diversas opções encontradas na listagem de técnicas e soluções. Essa pesquisa de artigos desenvolve um discernimento que é refletido em uma noção de funcionamento dos métodos, impactando muito na escolha da implementação para o projeto de pesquisa.
+Consiste na listagem de possíveis soluções, técnicas ou ferramentas; o estudo e a discussão sobre elas, em seguida, sua implementação. Paralelamente a isso, a busca bibliográfica é constantemente realizada com o objetivo de esclarecer dúvidas sobre os meios imaginados e discutidos com o orientador e coorientador. Essa busca dá ênfase nos resultados encontrados pelos artigos, o objetivo disto é caracterizar os prós e contras das diversas opções encontradas na listagem de técnicas e soluções. Essa pesquisa de artigos trás uma evolução do discernimento dos assuntos do estado da arte, refletindo em uma noção de funcionamento dos métodos científicos que constrói um novo pesquisador no desenvolvimento dessa iniciação científica.
 
-\section{Histórico do projeto}
+\section{Breve histórico do projeto}
 
-Desde o início dos trabalhos no projeto, foram experimentados diversos tipos de contato com a elaboração de \textit{softwares} para o sistema operacional \textit{Android} (figura \ref{fig:sceneform}); testes das ferramentas da documentação dos óculos de realidade aumentada \textit{SEIKO EPSON Moverio BT-350} (figura \ref{fig:latinha} e \ref{fig:papercar}); e a elaboração de aplicativos que ilustram o objetivo do \textit{VCranium} (figura \ref{fig:vcranium_alpha}). Assim, como foi explicado no relatório parcial da pesquisa, pretendíamos prosseguir o desenvolvimento estabelecendo uma arquitetura composta por computador, câmera (\textit{webcam)} e óculos para capturar os dados necessários para a projeção em realidade aumentada, mais detalhes serão descritos no capítulo das realizações.
+Desde o início dos trabalhos no projeto, foram experimentados diversos tipos de contato com a elaboração de \textit{softwares} para o sistema operacional \textit{Android} (\ref{fig:sceneform}); testes das ferramentas da documentação dos óculos de realidade aumentada \textit{SEIKO EPSON Corporation\texttrademark} \textit{Moverio BT-350} (\ref{fig:latinha} e \ref{fig:papercar}); e a elaboração de aplicativos que ilustram o objetivo do \textit{VCranium} (\ref{fig:vcranium_alpha}). Assim, como foi explicado no relatório parcial da pesquisa, pretendíamos prosseguir o desenvolvimento estabelecendo uma arquitetura composta por computador, câmera (\textit{webcam)} e óculos para capturar os dados necessários para a projeção em realidade aumentada, os detalhes serão descritos no capítulo das realizações.
 
 \begin{figure}[ht]
 \centering
@@ -21,6 +34,7 @@ Desde o início dos trabalhos no projeto, foram experimentados diversos tipos de
         \label{fig:sceneform}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
+        \centering
         \includegraphics[width=.95\linewidth]{figuras/Latinha-errada.png}
         \caption{Tentativa de calibração do \textit{Moverio}}
         \label{fig:latinha}
@@ -28,10 +42,11 @@ Desde o início dos trabalhos no projeto, foram experimentados diversos tipos de
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=.95\textwidth]{figuras/PaperCarAR.png}
-        \caption{Aplicativo de exemplo fornecido pela \textit{EPSON}}
+        \caption{Aplicativo fornecido pela \textit{EPSON}}
         \label{fig:papercar}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
+        \centering
         \includegraphics[width=.95\linewidth]{figuras/VCranium.png}
         \caption{Primeira versão do \textit{VCranium}}
         \label{fig:vcranium_alpha}

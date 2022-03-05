@@ -13,13 +13,13 @@ A primeira biblioteca de realidade aumentada a ser testada foi o \textit{Google 
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=.95\textwidth]{figuras/sceneform.png}
-        \caption{Simulação da projeção AR no \textit{Android Studio}}
+        \caption{Simulação da projeção AR }
         \label{fig:sceneform-sim}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=.95\textwidth]{figuras/sceneformAR.png}
-        \caption{\textit{Smartphone} com o aplicativo funcionando}
+        \caption{Teste do aplicativo com \textit{Smartphone} real}
         \label{fig:sceneform-real}
     \end{subfigure}
     \caption{Resultados adquiridos com o \textit{Google Sceneform}. Fonte: Autor.}
@@ -107,7 +107,7 @@ As formas de detecção tridimensionais não eram compatíveis com a detecção 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=.65\linewidth]{figuras/VCranium.png}
+    \includegraphics[width=.6\linewidth]{figuras/VCranium.png}
     \caption{A primeira imagem foi o primeiro teste com a projeção de um cubo na região da testa. A segunda detalha a superfície estimada da face e a projeção do cérebro. Fonte: Autor.}
     \label{fig:arfoundation}
 \end{figure}
@@ -118,13 +118,11 @@ Retornando ao objetivo prático de encontrar um meio de desenvolver o projeto, c
 
 Dado o histórico de testes do projeto, foi decidido prosseguir sem depender de \textit{plugins} e bibliotecas \textit{closed-source}, isso garantirá um maior controle do \textit{software} elaborado e também exigirá um estudo mais aprofundado de como os algoritmos de visão computacional funcionam. Essa mudança trará um contato maior com problemas discretizados de programação, auxiliando o processo do estudo e apresentação de dúvidas em seminário para os estudantes e professores dessa área de pesquisa na universidade.
 
-\section{Elaboração do VCranium}
-
-\subsection{Inspiração bibliográfica}
+\section{Revisão bibliográfica}
 
 Aqui podemos analisar com mais atenção os artigos da literatura e suas diferentes soluções para sistemas de realidade aumentada aplicados em cirurgias. O trabalho que mais auxiliou a pesquisa foi uma revisão literária de aplicações em AR para neurocirurgias: \textit{"Enhancing Reality: A Systematic Review of Augmented Reality in Neuronavigation and Education"} \cite{enhancedvision}. Esse artigo faz uma breve apresentação da aplicabilidade de AR em ambiente cirúrgico e tabela as informações de doze pesquisas mostrando as patologias tratadas; descrição de método; e resultado da precisão da projeção em AR.
 
-Dentre as pesquisas descritas estava o artigo de Maruyama: \textit{Smart Glasses for Neurosurgical Navigation by Augmented Reality} \cite{Maruyama2018}. Sua equipe de pesquisadores construíram um sistema que utilizava os óculos \textit{Moverio BT-200}, um modelo que se assemelha muito com o que possuímos no laboratório, para auxiliar a visualização de tumores cerebrais em dois pacientes, além disso, foi também possível exibir a escalpe e os vasos do cérebro nos óculos.
+Dentre as pesquisas descritas estava o artigo de Maruyama: \textit{Smart Glasses for Neurosurgical Navigation by Augmented Reality} \cite{Maruyama2018}. Sua equipe de pesquisadores construíram um sistema que utilizava os óculos \textit{Moverio BT-200}, um modelo que se assemelha muito com o que possuímos no laboratório, para auxiliar a visualização de tumores cerebrais em dois pacientes, além disso, foi também possível exibir a escalpe; o crânio; e os vasos da superfície do cérebro nos óculos.
 
 \begin{figure}[ht]
     \centering
@@ -132,6 +130,21 @@ Dentre as pesquisas descritas estava o artigo de Maruyama: \textit{Smart Glasses
     \caption{(A) Duas câmeras para detectar movimento, (B) Marcadores para paciente, (C) Marcadores nos óculos, (D) Visualização nos óculos. Fonte: \cite{Maruyama2018}.}
     \label{fig:maruyama}
 \end{figure}
+
+O método que o artigo utilizou apresentou a dinâmica da integração de componentes para uma arquitetura de um sistema AR: Empregar câmeras estereoscópicas para a detecção de marcadores nos óculos e na cabeça do paciente; relacionar com os dados da reconstrução 3D do cérebro; utilizar parâmetros da calibração; e fazer a exibição nos óculos. Por meio desse sistema, o resultado obtido é visto na figura \ref{fig:maruyama-overlay}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.65\linewidth]{figuras/maruyama-overlay.png}
+    \caption{(B) Computação gráfica da reconstrução do cérebro do paciente, (C) Visualização em AR antes da incisão. Fonte: \cite{Maruyama2018}.}
+    \label{fig:maruyama-overlay}
+\end{figure}
+
+A precisão da projeção, segundo o artigo, foi de \(2.1 \pm  1.3\,mm\) com a mediana de \(1.8\) e a remoção total de \(5\) tumores com sucesso e sem complicações pós-operatórias. Além disso, o sistema tem uma interface de fácil utilização e conveniência para o médico, sendo possível desabilitar a projeção em qualquer momento da cirurgia, teve um custo menor que os sistemas de neuronavegação convencionais e, por fim, pode ser instalado em outros óculos de AR comerciais disponíveis, portanto, não se limitando ao seu modelo do \textit{Moverio} \cite{Maruyama2018}.
+
+Visto os resultados apresentados por essa pesquisa e que a conjectura apresentada na seção anterior - aplicação baseado no \textit{Unity} para a compatibilidade com mais óculos do mercado - foram confirmados possíveis. Contudo, antes de simplesmente seguir os passos de Maruyama, decidimos fazer uma listagem das arquiteturas utilizadas em outros sistemas e tentar ponderar suas características para optarmos pela opção que mais atende as necessidades da pesquisa.
+
+\section{Elaboração do VCranium}
 
 \subsection{Arquitetura do Sistema}
 
