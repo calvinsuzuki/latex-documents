@@ -1,5 +1,148 @@
 \chapter{Realizações}\label{chp:realizacoes}
 
+\section{Moverio BT-350}
+
+% A \textit{Seiko Epson Corporation\texttrademark} introduziu o modelo no mercado com as vantagens de ser ajustável à cabeça; ser ideal para ser usado em lugares fechados ou ao ar livre; e possuir uma lente muito transparente, preparando-se para diversas modalidades de aplicações AR.
+
+% \subsection{Especificações técnicas}
+
+% \begin{description}
+%     \item[\textbf{Tecnologia Óptica:}] \textit{Si-OLED (Silicon - Organic Light-Emitting Diode)  }
+%     \item[\textbf{\textit{Field of View}:}] Aproximadamente 23°
+%     \item[\textbf{Tela:}] 720p; 24-bit colour; 30 FPS
+%     \item[\textbf{CPU e Memória:}]  Intel\textsuperscript{\textregistered} Atom\texttrademark x5, 1.44GHz Quad Core; 2GB RAM
+%     \item[\textbf{Armazenamento:}] 16GB Armazenamento (32GB Expansível)
+%     \item[\textbf{Conectividade:}] \textit{Wi-fi IEEE 802.11 (2G)}; \textit{USB 2.0}; \textit{Bluetooth BLE 4.0}
+%     \item[\textbf{Sensores (\textit{Headset} e Controle):}] GPS; Giroscópio; e Acelerômetro
+% \end{description}
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=.45\linewidth]{figuras/glass_comp.png}
+%     \caption{Indicação da localização dos componentes nos óculos \textit{Moverio Bt-350}. Fonte: Autor.}
+%     \label{fig:glass-parts}
+% \end{figure}
+
+\subsection{Documentação}
+
+A \textit{Epson} disponibilizou uma documentação sobre as funcionalidades dos óculos e forneceu algumas ferramentas e aplicações exemplares para auxiliar os desenvolvedores de aplicativos do \textit{Moverio}. A tabela abaixo apresenta os arquivos da documentação e uma breve descrição:
+
+\begin{center}
+    \begin{tabular}{ |c|c| } 
+        \hline
+        \textbf{Arquivo} & \textit{\textbf{Descrição}} \\ 
+        \hline
+        \textit{CalibrationTool.apk} & Aplicativo de calibração da projeção da tela dos óculos\\ 
+        \hline
+        \multirow{2}{*}{\textit{CaptureTool.apk}} & Ferramenta que ajuda a capturar fotos para \\  & o mapeamento de novos marcadores e objetos \\
+        \hline
+        \multirow{2}{*}{\textit{TrainingToolWindows}} & Usa as imagens obtidas do \textit{CaptureTool.apk} e cria o \\ & \textit{dataset} para a detecção do novo marcador ou objeto  \\
+        \hline
+        \textit{Moverio\_AR} & Exemplo de cena que aplica funções do \textit{Moverio} no \textit{Unity} \\ 
+        \hline
+    \end{tabular}
+\end{center}
+
+Antes de prosseguirmos com os testes de cada programa, é importante denotar que o suporte da fabricante foi precário. No momento em que o projeto foi aprovado e acessou os \textit{sites} da fabricante, não foi encontrado a atualização de sistema, ficando com o \textit{Android 5.1} (\textit{API 22 Lollipop}) que estava muito desatualizado em relação ao mercado atual. Além disso, existia uma biblioteca exclusiva de aplicativos para o \textit{Moverio}, porém não para o \textit{BT-350}, mas para outros modelos com foco em usuário. A documentação existia, porém sua última atualização foi em julho de 2019, segundo os metadados dos arquivos. Por fim, infelizmente, o suporte do produto foi descontinuado enquanto a pesquisa utilizava sua documentação, ademais, os arquivos da documentação foram excluídos do \textit{site} da fabricante. O \textit{download} de todos os arquivos foi feito e reservado para os estudantes do laboratório.
+
+\subsection{\textit{Calibration Tool}}
+
+Segundo a fabricante, cada pessoa tem uma distância e um formato de rosto diferente, exigindo uma calibração específica para cada usuário \cite{Maruyama2018}. Essa calibração pode ser feita manualmente por meio da interface do \textit{CalibrationTool.apk}, que é instalado diretamente nos óculos. A calibração é efetuada ao ajustarmos uma imagem com o movimento da cabeça sobre o marcador da Figura \ref{fig:marker}. O processo é feito com cada olho, então fechamos o olho direito, ajustamos o esquerdo e fazemos o mesmo para o direito (Figura \ref{fig:calib}).
+
+\begin{figure}[ht]
+\centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{figuras/Marcador.png}
+        \caption{Marcador da biblioteca \textit{Moverio}}
+        \label{fig:marker}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=.95\textwidth]{figuras/Calibration.png}
+        \caption{Aplicativo fazendo a calibração}
+        \label{fig:calib}
+    \end{subfigure}
+    \caption{Calibração usando marcador impresso e o aplicativo \textit{Calibration Tool} instalado nos óculos. Fonte: Autor.}      
+    \label{fig:calibration}
+\end{figure}
+
+\subsection{\textit{Capture Tool}}
+
+A \textit{Epson} forneceu um aplicativo para auxiliar a captura de fotos para o reconhecimento de novos objetos. O programa utiliza a imagem do marcador (Figura \ref{fig:marker}) que serve de referência de localização para a câmera que captura 16 imagens com a posição pré-definida. A obturação é automática quando o usuário entra na posição determinada, no entanto, a utilização do programa não é satisfatória na maioria das vezes: A câmera aciona automaticamente quando você está indo para a posição desejada, ou seja, ele obtura uma imagem embaçada pois sua cabeça ainda está em movimento.
+
+\subsection{\textit{Training Tool}}
+
+O \textit{software} tem o intuito de ampliar as possibilidades da detecção adicionando novos marcadores e objetos nos programas elaborados. Para treinarmos um  objeto precisamos importar o modelo 3D (\textit{STL}) no programa, e então utilizar as imagens coletadas do \textit{Capture Tool} para fazer um treinamento que habilitará a identificação do novo objeto. O primeiro teste foi realizado com uma lata de refrigerante, encontrado gratuitamente na \textit{internet}. Quando prosseguimos no programa, é pedido para escolhermos uma das imagem da captura e correlacionar pontos no objeto real da imagem e o modelo virtual (Figura \ref{fig:train-pt}). Após esse processo manual, o programa realiza a sobreposição do modelo no resto das imagens e libera uma ação de ajuste finais.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.6\linewidth]{figuras/TrainingPoints.png}
+    \caption{Tela da seleção de pontos. Fonte: Autor.}
+    \label{fig:train-pt}
+\end{figure}
+
+O ajuste manual funciona muito bem, seu resultado é a figura \ref{fig:ajuste-manual}. O próximo passo é esperar o programa encontrar a posição automaticamente no resto das imagens, porém, isso não ocorre como o desejado. A Figura \ref{fig:estimation} representa uma falha na estimação de posição da lata, normalmente, pensaríamos em descartar essa imagem da lista, no entanto, essa é a melhor tentativa que o programa fez, os demais erram tanto que a latinha mal aparece na imagem. Ao tentar realizar um reajuste nessa imagem, o programa impede a ação e notifica que a diferença é muito grande em relação ao primeiro ajuste, o que impossibilita o resultado de ser satisfatório.
+
+\begin{figure}[ht]
+\centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{figuras/Latinha-ideal.png}
+        \caption{Ajuste manual da Figura \ref{fig:train-pt}}
+        \label{fig:ajuste-manual}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=.95\linewidth]{figuras/Latinha-errada.png}
+        \caption{Posição encontrada pelo programa }
+        \label{fig:estimation}
+    \end{subfigure}
+    \caption{Tentativa do treinamento na detecção da lata de refrigerante. Fonte: Autor.}
+    \label{fig:pose-estimation}
+\end{figure}
+
+% As primeiras suspeitas disso ocorrer foi a mensagem inicial que o programa alertou que o modelo possui muitos detalhes, então tentamos criar nosso próprio modelo simplificado com uma forma menos simétrica que a lata. Um papel sulfite foi dobrado em formato de cone não regular e modelado no computador como pode ser visto na Figura \ref{fig:ConeAR}.
+
+% \begin{figure}[ht]
+% \centering
+%     \begin{subfigure}{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=.95\textwidth]{figuras/ConeSTL.png}
+%         \caption{Modelo em \textit{STL} do objeto}
+%         \label{fig:cone-stl}
+%     \end{subfigure}
+%     \begin{subfigure}{0.45\textwidth}
+%         \includegraphics[width=.95\linewidth]{figuras/Cone.png}
+%         \caption{Sessão de captura feita em uma mesa preta}
+%         \label{fig:cone-training}
+%     \end{subfigure}
+%     \caption{A tentativa com o cone foi feita em outro ambiente com o fim dar um maior destaque no objeto. Fonte: Autor.}
+%     \label{fig:ConeAR}
+% \end{figure}
+
+% O resultado foi muito semelhante ao erro encontrado na tentativa da lata, o programa é incapaz de predizer a posição do objeto para as demais imagens como acontece na Figura \ref{fig:pose-estimation}. O erro pode ter ocorrido da variação da iluminação, na lata ou da mesa ter reflexos do ambiente, ou mesmo que ambos os objetos não possuem textura.
+
+\subsection{\textit{Moverio AR}}\label{chp:moverio-unity}
+
+\textit{Unity} é um programa voltado para o desenvolvimento de jogos em múltiplas plataformas, sendo o \textit{Android} uma delas, e com o apoio da USP, temos acesso a mais recursos para os projetos desenvolvidos nele \cite{UnityOficial}. A documentação da forneceu um programa de exemplo para \textit{Unity} que pode reconhecer um carrinho de papel e sobrepor com animações em AR. Para o teste, supomos que ele funcionaria com uma imagem no computador, pois ele não pode diferenciar tridimensionais e bidimensionais pela limitação da câmera. De fato, isso ocorreu e o teste foi registrado na figura \ref{fig:papercar-tests}.
+
+\begin{figure}[ht]
+    \centering
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\textwidth]{figuras/PaperCar.png}
+            \caption{Modelo virtual do carrinho de papel}
+            \label{fig:papercar-stl}
+        \end{subfigure}
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\textwidth]{figuras/PaperCarAR.png}
+            \caption{Sobreposição em AR com \textit{Moverio}}
+            \label{fig:papercar-ar}
+        \end{subfigure}
+        \caption{Resultados adquiridos dos testes da documentação \textit{Moverio} no \textit{Unity}. Fonte: Autor.}
+        \label{fig:papercar-tests}
+\end{figure}
+
 \section{Estudos em desenvolvimento Android Studio}
 
 O desenvolvimento de aplicativos para \textit{Android} foi estudado nos primeiros meses da pesquisa. Nessa parte do projeto, a pesquisa teve um aspecto mais técnico, que foi necessário para a programação das futuras aplicações que estariam por vir. A \textit{IDE} (ambiente de desenvolvimento integrado) utilizada foi o \textit{Android Studio}, que foi sugerida pelo curso adquirido da \textit{Udemy} \cite{udemy}.
@@ -26,16 +169,17 @@ A primeira biblioteca de realidade aumentada a ser testada foi o \textit{Google 
     \label{fig:sceneform-tests}
 \end{figure}
 
-Prosseguindo os estudos de aplicativos AR, percebemos que os problemas de versão tidos com o \textit{Sceneform} estavam sendo reparados pelo \textit{Google}e adaptados em um novo programa: \textit{Google ARCore Services} \cite{arcore-googleplay}. Sua proposta é que uma biblioteca seja instalada no celular para que os aplicativos tenham acesso, trazendo a vantagem da redução do tamanho das aplicações produzidas. No entanto, somente uma lista restrita de \textit{smartphones} modernos podem instalar essa biblioteca, a justificativa dos desenvolvedores é a compatibilidade com o sistema \cite{arcore-list}.
+Prosseguindo os estudos de aplicativos AR, percebemos que os problemas de versão tidos com o \textit{Sceneform} estavam sendo reparados pelo \textit{Google} e adaptados em um novo programa: \textit{Google ARCore Services} \cite{arcore-googleplay}. Sua proposta é que uma biblioteca seja instalada no celular para que os aplicativos tenham acesso, trazendo a vantagem da redução do tamanho das aplicações produzidas. No entanto, somente uma lista restrita de \textit{smartphones} modernos podem instalar essa biblioteca, a justificativa dos desenvolvedores é a compatibilidade com o sistema \cite{arcore-list}.
 
 Seguido disso, durante a pesquisa foi encontrado uma nova ideia \textit{open-source}, também do \textit{Google}, chamado \textit{Mediapipe}, que tinha a proposta de entregar muitas ferramentas de visão computacional com ML (\textit{machine learning}) integrado \cite{mediapipe-docs}. O projeto foi iniciado em julho de 2019, e tem ganhado mais popularidade por ser gratuito, multi-plataforma e facilitar muito a aplicação de ML para \textit{Android}, \textit{iOS}, e PC. No momento da descoberta, não era conhecido a compatibilidade do \textit{Mediapipe} com \textit{API} antigas de \textit{Android} e muito menos o seu comportamento em óculos de realidade aumentada, por isso, a ideia foi reservada.
 
-\begin{description}
-   \item Um sumário das opções testadas com breves comentários abaixo:
-   \item[\textit{Google Sceneform}] É um \textit{plugin} para \textit{Android Studio} que introduz muitas ferramentas para o desenvolvimento de aplicativos AR. Funciona somente em \textit{Android} com a \textit{API} 24 ou superior. Seu projeto foi arquivado em meados de 2020. 
-   \item[\textit{Google ARCore Services}] Pode se considerar o sucessor das ideias do \textit{Sceneform}. Ele fornece uma biblioteca de ferramentas sofisticadas para AR e atualizações frequentes. Funciona somente em uma lista estrita de \textit{smartphones} modernos. 
-   \item[\textit{Mediapipe}] Fornece uma grande quantidade de ferramentas baseadas em \textit{Machine Learning} para visão computacional. Projeto iniciado em junho de 2019 e ganhando mais força recentemente. Pela recente criação, não é conhecido seu comportamento em \textit{API} antigas (28 ou anterior).
-\end{description}
+% LISTA RESUMIDA ANDROID STUDIO
+% \begin{description}
+%    \item Um sumário das opções testadas com breves comentários abaixo:
+%    \item[\textit{Google Sceneform}] É um \textit{plugin} para \textit{Android Studio} que introduz muitas ferramentas para o desenvolvimento de aplicativos AR. Funciona somente em \textit{Android} com a \textit{API} 24 ou superior. Seu projeto foi arquivado em meados de 2020. 
+%    \item[\textit{Google ARCore Services}] Pode se considerar o sucessor das ideias do \textit{Sceneform}. Ele fornece uma biblioteca de ferramentas sofisticadas para AR e atualizações frequentes. Funciona somente em uma lista estrita de \textit{smartphones} modernos. 
+%    \item[\textit{Mediapipe}] Fornece uma grande quantidade de ferramentas baseadas em \textit{Machine Learning} para visão computacional. Projeto iniciado em junho de 2019 e ganhando mais força recentemente. Pela recente criação, não é conhecido seu comportamento em \textit{API} antigas (28 ou anterior).
+% \end{description}
 
 % \begin{figure}[ht]
 % \centering
@@ -54,7 +198,7 @@ Seguido disso, durante a pesquisa foi encontrado uma nova ideia \textit{open-sou
 %     \begin{subfigure}{0.45\textwidth}
 %         \centering
 %         \includegraphics[width=.95\textwidth]{figuras/PaperCarAR.png}
-%         \caption{Aplicativo de exemplo fornecido pela \textit{EPSON}}
+%         \caption{Aplicativo de exemplo fornecido pela \textit{Epson}}
 %         \label{fig:papercarr}
 %     \end{subfigure}
 %     \begin{subfigure}{0.45\textwidth}
@@ -70,29 +214,7 @@ O que podemos concluir do desenvolvimento de aplicações em realidade aumentada
 
 \section{Estudos de desenvolvimento Unity}
 
-\textit{Unity} é um programa voltado para o desenvolvimento de jogos em múltiplas plataformas, sendo o \textit{Android} uma delas, e com o apoio da USP, temos acesso a mais recursos para os projetos desenvolvidos nele \cite{UnityOficial}. A documentação da \textit{EPSON} forneceu um programa de exemplo para \textit{Unity} que pode reconhecer um certo carrinho de papel e sobrepor com animações em AR.
-
-Foi sugerido a impressão e a montagem do carrinho de papel pela documentação, porém, como os óculos possuem somente uma \textit{webcam} simples para a detecção, supomos que ele não pode diferenciar o carrinho real de uma fotografia do carrinho, então, ele funcionaria normalmente com uma imagem do computador. De fato, isso ocorreu e o teste foi registrado nas figuras \ref{fig:papercar-stl} e \ref{fig:papercar-ar}.
-
-\begin{figure}[ht]
-    \centering
-        \begin{subfigure}{.45\textwidth}
-            \centering
-            \includegraphics[width=.95\textwidth]{figuras/PaperCar.png}
-            \caption{Modelo virtual do carrinho de papel}
-            \label{fig:papercar-stl}
-        \end{subfigure}
-        \begin{subfigure}{.45\textwidth}
-            \centering
-            \includegraphics[width=.95\textwidth]{figuras/PaperCarAR.png}
-            \caption{Sobreposição em AR com \textit{Moverio}}
-            \label{fig:papercar-ar}
-        \end{subfigure}
-        \caption{Resultados adquiridos dos testes da documentação \textit{Moverio} no \textit{Unity}. Fonte: Autor.}
-        \label{fig:papercar-tests}
-\end{figure}
-
-Este foi o único programa disponibilizado na documentação, o projeto foi elaborado no \textit{Unity} 2017, mesmo com alguns alertas de incompatibilidade, o projeto pôde ser compilado com êxito e funcionou nos óculos. Novamente, a falta do suporte da \textit{EPSON} deixou incerto se era uma boa opção construir um aplicativo somente baseado na documentação disponível. Por isso, iniciamos novamente uma pesquisa sobre as ferramentas para suporte de AR nessa plataforma.
+O programa apresentado no capítulo "\nameref{chp:moverio-unity}" foi o único programa em \textit{Unity} disponibilizado na documentação dos óculos, o projeto foi elaborado no \textit{Unity} 2017, mesmo com alguns alertas de incompatibilidade, o projeto pôde ser compilado com êxito e funcionou nos óculos. Novamente, a falta do suporte da \textit{EPSON} deixou incerto se era uma boa opção construir um aplicativo somente baseado na documentação disponível. Por isso, iniciamos novamente uma pesquisa sobre as ferramentas para suporte de AR nessa plataforma.
 
 O \textit{Vuforia} foi o primeiro \textit{plugin} a ser testado no ambiente do \textit{Unity} \cite{Vuforia}. Atualmente, ele apresenta mais opções rastreio para AR, mas no momento em que foi experimentado pela pesquisa as opções eram de usar imagens e algumas formas 3D como marcadores para suas projeções. Foi testado a detecção de imagem com um pedaço da logo da \textit{Coca-cola\texttrademark} como alvo, a figura \ref{fig:vuforia-tests} ilustra os resultados.
 
@@ -131,8 +253,6 @@ Dentre as pesquisas descritas estava o artigo de Maruyama: \textit{Smart Glasses
     \label{fig:maruyama}
 \end{figure}
 
-O método que o artigo utilizou apresentou a dinâmica da integração de componentes para uma arquitetura de um sistema AR: Empregar câmeras estereoscópicas para a detecção de marcadores nos óculos e na cabeça do paciente; relacionar com os dados da reconstrução 3D do cérebro; utilizar parâmetros da calibração; e fazer a exibição nos óculos. Por meio desse sistema, o resultado obtido é visto na figura \ref{fig:maruyama-overlay}.
-
 \begin{figure}
     \centering
     \includegraphics[width=.65\linewidth]{figuras/maruyama-overlay.png}
@@ -140,25 +260,21 @@ O método que o artigo utilizou apresentou a dinâmica da integração de compon
     \label{fig:maruyama-overlay}
 \end{figure}
 
+O método que o artigo utilizou apresentou a dinâmica da integração de componentes para uma arquitetura de um sistema AR: Empregar câmeras estereoscópicas para a detecção de marcadores nos óculos e na cabeça do paciente; relacionar com os dados da reconstrução 3D do cérebro; utilizar parâmetros da calibração; e fazer a exibição nos óculos. Por meio desse sistema, o resultado obtido é visto na figura \ref{fig:maruyama-overlay}.
+
 A precisão da projeção, segundo o artigo, foi de \(2.1 \pm  1.3\,mm\) com a mediana de \(1.8\) e a remoção total de \(5\) tumores com sucesso e sem complicações pós-operatórias. Além disso, o sistema tem uma interface de fácil utilização e conveniência para o médico, sendo possível desabilitar a projeção em qualquer momento da cirurgia, teve um custo menor que os sistemas de neuronavegação convencionais e, por fim, pode ser instalado em outros óculos de AR comerciais disponíveis, portanto, não se limitando ao seu modelo do \textit{Moverio} \cite{Maruyama2018}.
 
-Visto os resultados apresentados por essa pesquisa e que a conjectura apresentada na seção anterior - aplicação baseado no \textit{Unity} para a compatibilidade com mais óculos do mercado - foram confirmados possíveis. Contudo, antes de simplesmente seguir os passos de Maruyama, decidimos fazer uma listagem das arquiteturas utilizadas em outros sistemas e tentar ponderar suas características para optarmos pela opção que mais atende as necessidades da pesquisa.
+Os resultados apresentados por essa pesquisa e que a conjectura apresentada na seção anterior - aplicação baseado no \textit{Unity} para a compatibilidade com mais óculos do mercado - foram confirmados possíveis. Contudo, antes de simplesmente seguir os passos de Maruyama, decidimos fazer uma listagem das arquiteturas utilizadas em outros sistemas para tentar ponderar suas características para optarmos pela opção que mais atende as necessidades da pesquisa.
 
 \section{Elaboração do VCranium}
 
 \subsection{Arquitetura do Sistema}
 
-Para a definição de uma arquitetura adequada para o projeto foram analisados os exemplos que a literatura pôde nos dar como
+A definição da arquitetura do sistema é muito importante para configurar o funcionamento do sistema, estabelecer suas vantagens e desvantagens, e implicará como nós trabalhos em seu desenvolvimento. Para isso, a equipe realizou reuniões e debates para estabelecer uma solução que seja compatível para um período de seis meses e respeitando as medidas de prevenção por afastamento pela pandemia de COVID-19. Ainda assim, precisamos de uma arquitetura versátil e que objetiva facilitar a mudança de métodos de estimação a posição da projeção em AR. 
 
-[Fazer Tabela de arquiteturas]
+Para tal, dividiremos o sistema em computador e óculos: O computador estima a posição da projeção e os óculos fazem a visualização nos olhos do usuário. Isso simplifica a mudança de método aplicado pelo computador, melhorando a recepção de novos algoritmos da equipe de estudos do laboratório. Esse invento foi aplicado no artigo de Maruyama, que utilizou um \textit{software} de visualização médica e enviou os dados de exibição para o \textit{Unity} nos óculos \cite{Maruyama2018}. Com a definição dos componentes da arquitetura, deve ser definido uma comunicação entre os dispositivos. Um exemplo da literatura foi o uso do computador para adquirir informações de sinais vitais de equipamentos médicos e o envio para os óculos via \textit{TCP/IP} (Protocolo de Controle de Transmissão / Protocolo de \textit{Internet}) \cite{Arpaia2021}.
 
-Para esse fim, a equipe realizou reuniões e debates para estabelecer uma solução que seja compatível para um período de seis meses e respeitando as medidas de prevenção por afastamento imposto pela pandemia de COVID-19. Decide-se criar sistema que envolve um computador executando um servidor em \textit{Python}; uma 
-
-% que possui ampla compatibilidade com ferramentas atuais de realidade aumentada, e conectar com os óculos executando uma aplicação \textit{Unity} que posicionaria os objetos 3D na visão do usuário sob as instruções do servidor.
-
-Foram estudados diversos tipos de arquitetura do sistema de projeção em realidade aumentada
-
-A escolha da arquitetura do sistema foi baseada na aplicação dos conceitos menos complexos da visão computacional: a detecção da posição de um marcador no espaço. Essa aplicação foi o ponto de partida de estudos das projeções em realidade aumentada em imagens capturadas por uma câmera.
+Utilizando o recurso de conexão \textit{wireless} dos óculos, podemos nos conectar com o computador via \textit{LAN} (Rede de área local). Na questão da oscilação, basta estar em um raio de cinco metros da origem do sinal, livre de obstáculos, que o sinal possui uma boa velocidade e latência, \(v \pm u \, Mbps\) e  \(s \pm e \, ms\), respectivamente, e dessa maneira, temos liberdade de enviarmos dados grandes como imagens. Essa característica tem afinidade com a arquitetura mencionada anteriormente: O computador aplica algoritmos de visão computacional em imagens recebida dos óculos e retorna os resultados para os óculos novamente.
 
 \begin{figure}[ht]
     \centering
@@ -167,75 +283,72 @@ A escolha da arquitetura do sistema foi baseada na aplicação dos conceitos men
     \label{fig:arc}
 \end{figure}
 
-% \textbf{Algoritmo de detecção da posição de marcador}
-% \textbf{Entrada:} Imagem da câmera
-% \textbf{Saída:} Posição do marcador
+\subsection{Comunicação}
 
-% \textbf{Etapa 1:} Capture uma imagem da câmera e vá para a Etapa 4, senão há imagem então pare.
-
-% \textbf{Etapa 2:} Identifique o ArUco e vá para a Etapa 3.
-
-% \textbf{Etapa 3:} Estime da posição do marcador no espaço em referência a câmera e retorne à Etapa 1.
-
-% \section{Rascunho}
-%% 
-
-% \textit{Vuforia} também tem o suporte do reconhecimento de objetos tridimensionais, porém, os critérios devem ser respeitados:
-% \begin{itemize}
-%     \item O objeto deve caber no marcador auxiliar (folha A4)
-%     \item O objeto não pode conter partes transparentes, translúcidas, luminosas ou reluzentes
-%     \item O objeto precisa ter a morfologia (forma) completamente estática
-% \end{itemize}
+A parte prática da programação do sistema teve o desafio de conciliar a comunicação do computador utilizando \textit{Python} para o \textit{Unity} dos óculos. As pesquisas na \textit{web} demonstraram essa comunicação via \textit{TCP/IP} com a utilização de \textit{network sockets} \cite{socket-tutorial}. No entanto, o que precisava ser feito é a transmissão de vídeo em tempo real (\textit{video streaming}), essa ocasião é diferente do envio de uma mensagem de texto, que está na ordem de centenas de \textit{bytes}, uma única imagem pode carregar milhões de \textit{bytes} de informação.
 
 % \begin{figure}[ht]
 %     \centering
-%     \includegraphics[width=.6\linewidth]{figuras/VCranium.png}
-%     \caption{Na esquerda, um teste com um cubo orientado com a face. Na direita, o protótipo do \textit{VCranium} e a exibição do formato de rosto detectado pelo programa. Fonte: Autor.}
-%     \label{fig:vcranium}
+%     \includegraphics[width=.6\linewidth]{figuras/comm.png}
+%     \caption{Êxito da transmissão em tempo real das imagens dos óculos. Fonte: Autor.}
+%     \label{fig:communication}
+% \end{figure}
+
+Nos testes iniciais, a tentativa foi realizar o processo contínuo de obturação de foto e envio dos dados via \textit{TCP} ao computador. Porém, ocasionalmente, a visualização da imagem era cortada horizontalmente, parecendo que "faltou um pedaço"\(\,\). Isso ocorre pois no processo de recepção de dados do \textit{socket}, a instrução de leitura não sabe o tamanho do arquivo a ser recebido da rede, i.e, o computador não saber o tamanho da imagem e eventualmente causava a renderização parcial das informações da foto, resultando em uma imagem cortada.
+
+\begin{figure}[ht]
+    \centering
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\linewidth]{figuras/header.png}
+    \caption{Comparação entre uma imagem defeituosa e imagem corrigida com o \textit{header}.}
+    \label{fig:header}
+        \end{subfigure}
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\linewidth]{figuras/comm.png}
+            \caption{Êxito na transmissão em tempo real das imagens dos óculos para o computador.}
+            \label{fig:communication}
+        \end{subfigure}
+        \caption{Resultados dos testes de comunicação Fonte: Autor.}
+        \label{fig:comm-tests}
+    \end{figure}
+
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=.6\linewidth]{figuras/header.png}
+%     \caption{(A) Falha na transmissão\(\,\)(B) Imagem real. Fonte: Autor.}
+%     \label{fig:header}
 % \end{figure}
 
 % \begin{figure}[ht]
-% \centering
-%     \begin{subfigure}{0.45\textwidth}
-%         \centering
-%         \includegraphics[width=.95\textwidth]{figuras/ConeSTL.png}
-%         \caption{Modelo em \textit{STL} do objeto}
-%         \label{fig:cone-stl}
-%     \end{subfigure}
-%     \begin{subfigure}{0.45\textwidth}
-%         \includegraphics[width=.95\linewidth]{figuras/Cone.png}
-%         \caption{Sessão de captura feita em uma mesa preta}
-%         \label{fig:cone-training}
-%     \end{subfigure}
-%     \begin{subfigure}{0.45\textwidth}
-%         \centering
-%         \includegraphics[width=.95\textwidth]{figuras/ConeSTL.png}
-%         \caption{Modelo em \textit{STL} do objeto}
-%         \label{fig:cone-stl}
-%     \end{subfigure}
-%     \begin{subfigure}{0.45\textwidth}
-%         \includegraphics[width=.95\linewidth]{figuras/Cone.png}
-%         \caption{Sessão de captura feita em uma mesa preta}
-%         \label{fig:cone-training}
-%     \end{subfigure}
-%     \caption{A tentativa com o cone foi feita em outro ambiente com o fim dar um maior destaque no objeto. Fonte: Autor.}
-%     \label{fig:ConeAR}
+%     \centering
+%     \includegraphics[width=.65\linewidth]{figuras/comm.png}
+%     \caption{Transmissão em tempo real das imagens dos óculos. Fonte: Autor.}
+%     \label{fig:communication}
 % \end{figure}
 
-% \begin{center}
-% \begin{tabular}{ |c|c| } 
-% \hline
-% \textbf{Arquivo} & \textit{\textbf{Descrição}} \\ 
-% \hline
-% \textit{CalibrationTool.apk} & Aplicativo de calibração da projeção da tela dos óculos\\ 
-% \hline
-% \multirow{2}{*}{\textit{CaptureTool.apk}} & Ferramenta que ajuda a capturar fotos para \\  & o mapeamento de novos marcadores e objetos \\
-% \hline
-% \multirow{2}{*}{\textit{TrainingToolWindows}} & Usa as imagens obtidas do \textit{CaptureTool.apk} e cria o \\ & \textit{dataset} para a detecção do novo marcador ou objeto  \\
-% \hline
-% \textit{Moverio\_AR} & Exemplo de cena que aplica funções do \textit{Moverio} no \textit{Unity} \\ 
-% \hline
-% \end{tabular}
-% \end{center}
+A solução desse problema foi fazer um envio de uma mensagem de tamanho fixo (\textit{header}) avisando ao computador o tamanho da próxima imagem, garantindo a captura correta da informação dos óculos.
+
+
+\subsection{Estimação da posição AR}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\linewidth]{figuras/flowchart.png}
+    \caption{Fluxograma dos processos da execução do \textit{VCranium}. Fonte: Autor.}
+    \label{fig:flowchart}
+\end{figure}
+
+\subsection{\textit{User Interface}}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.65\linewidth]{figuras/vcranium_connect.png}
+    \caption{Interface de conexão com computador. Fonte: Autor.}
+    \label{fig:vcranium-connect}
+\end{figure}
+
+
 
 
