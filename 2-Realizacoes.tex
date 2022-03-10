@@ -285,7 +285,7 @@ Utilizando o recurso de conexão \textit{wireless} dos óculos, podemos nos cone
 
 \subsection{Comunicação}
 
-A parte prática da programação do sistema teve o desafio de conciliar a comunicação do computador utilizando \textit{Python} para o \textit{Unity} dos óculos. As pesquisas na \textit{web} demonstraram essa comunicação via \textit{TCP/IP} com a utilização de \textit{network sockets} \cite{socket-tutorial}. No entanto, o que precisava ser feito é a transmissão de vídeo em tempo real (\textit{video streaming}), essa ocasião é diferente do envio de uma mensagem de texto, que está na ordem de centenas de \textit{bytes}, uma única imagem pode carregar milhões de \textit{bytes} de informação.
+A parte prática da programação do sistema teve o desafio de conciliar a comunicação do computador programado em \textit{Python} com os óculos programados em \textit{Unity}. As pesquisas na \textit{web} demonstraram essa comunicação via \textit{TCP/IP} com a utilização de \textit{network sockets} \cite{socket-tutorial}. No entanto, o que precisava ser feito é a transmissão de vídeo em tempo real (\textit{video streaming}), essa ocasião é diferente do envio de uma mensagem de texto, que está na ordem de centenas de \textit{bytes}, uma única imagem pode carregar milhões de \textit{bytes} de informação.
 
 % \begin{figure}[ht]
 %     \centering
@@ -294,7 +294,7 @@ A parte prática da programação do sistema teve o desafio de conciliar a comun
 %     \label{fig:communication}
 % \end{figure}
 
-Nos testes iniciais, a tentativa foi realizar o processo contínuo de obturação de foto e envio dos dados via \textit{TCP} ao computador. Porém, ocasionalmente, a visualização da imagem era cortada horizontalmente, parecendo que "faltou um pedaço"\(\,\). Isso ocorre pois no processo de recepção de dados do \textit{socket}, a instrução de leitura não sabe o tamanho do arquivo a ser recebido da rede, i.e, o computador não saber o tamanho da imagem e eventualmente causava a renderização parcial das informações da foto, resultando em uma imagem cortada.
+Nos testes iniciais, a tentativa foi realizar o processo contínuo de obturação de foto e envio dos dados via \textit{TCP} ao computador. Porém, ocasionalmente, a visualização da imagem era cortada horizontalmente, parecendo que "faltou um pedaço"\(\,\). Isso ocorre pois no processo de recepção de dados do \textit{socket}, a instrução de leitura não sabe o tamanho do arquivo a ser recebido da rede, i.e, o computador não saber o tamanho da imagem eventualmente causava a renderização parcial das informações da foto, resultando em uma imagem cortada.
 
 \begin{figure}[ht]
     \centering
@@ -328,10 +328,15 @@ Nos testes iniciais, a tentativa foi realizar o processo contínuo de obturaçã
 %     \label{fig:communication}
 % \end{figure}
 
-A solução desse problema foi fazer um envio de uma mensagem de tamanho fixo (\textit{header}) avisando ao computador o tamanho da próxima imagem, garantindo a captura correta da informação dos óculos.
+A solução desse problema foi fazer um envio de uma mensagem de tamanho fixo (\textit{header}) avisando ao computador o tamanho da próxima imagem, garantindo a captura completa da informação de cada foto (Figura \ref{fig:header}). Esse estudo e investigação do problema ampliou muito os conhecimentos de redes e seus protocolos de comunicação. Foi possível adquirir um resultado melhor que o esperado na transmissão de vídeo, obtendo uma taxa superior a 20 quadros por segundo, sua variação é sensível ao conteúdo da imagem por causar variação na taxa de compressão do formato \textit{JPEG} (\textit{Joint Photographic Experts Group}). 
 
+\subsection{Estimação da posição da projeção}
 
-\subsection{Estimação da posição AR}
+A aplicação objetiva exibir os detalhes da anatomia cerebral de um paciente em AR para auxiliar os procedimentos operatórios de um neurocirurgião. Para isso, devemos utilizar um método que estime a relação entre o mundo real e virtual para sobrepormos a cabeça do paciente com a vista 3D dos seus dados da tomografia computadorizada. A procura desse método é o objeto de pesquisa de muitas referências bibliográficas. Nesse ponto da pesquisa, o projeto pode receber os métodos pesquisados por outros estudantes do laboratório, no entanto, optamos por um método com baixa complexidade para darmos ênfase no objetivo de completarmos todo o sistema e, em um futuro breve, torná-lo em algo mais adequado para o ambiente cirúrgico.
+
+O método de estimação escolhido foi a detecção de marcadores fiduciais nativos da biblioteca do \textit{OpenCV}, o \textit{ArUco}. A estratégia de marcadores, especificamente os com forma quadrada, é comumente utilizada em aplicações de realidade aumentada pela sua rápida responsividade e robustez \cite{Romero-Ramirez2018}. Ele é especial por ter quatro pontos proeminentes (os quatro vértices) que facilitam sua detecção e seu conteúdo interno, preenchido com um padrão único, serve de identificador para o computador \cite{Poroykov2020}.
+
+O algoritmo da detecção \textit{ArUco} foi implementado junto ao programa \textit{Python} do computador. Esse módulo tem como entrada uma imagem dos óculos e saída as coordenadas da posição e rotação do marcador. Os dados são formatados em uma mensagem de tamanho fixo e enviado por \textit{TCP}, semelhante ao \textit{header} da imagem. Na rotina de execução dos óculos, ele primeiro obtura a imagem e envia para o computador, então ele espera a resposta com as informações do \textit{ArUco} correspondentes à imagem e por fim ele posiciona a projeção AR. Na detecção de quaisquer erros de formatação dos \textit{header}, são emitidos como erros fatais no programa, parando todos os processos da execução, vistos no fluxograma da figura \ref{fig:flowchart}.
 
 \begin{figure}[ht]
     \centering
@@ -339,6 +344,8 @@ A solução desse problema foi fazer um envio de uma mensagem de tamanho fixo (\
     \caption{Fluxograma dos processos da execução do \textit{VCranium}. Fonte: Autor.}
     \label{fig:flowchart}
 \end{figure}
+
+\newpage
 
 \subsection{\textit{User Interface}}
 
