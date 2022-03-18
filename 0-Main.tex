@@ -8,7 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{hyperref}
-\usepackage{booktabs}
+\usepackage{bookmark}
 \usepackage{mathtools}
 \usepackage{listings}
 \usepackage{multirow}
@@ -17,6 +17,11 @@
 \usepackage{comment}
 \usepackage{subcaption}
 \usepackage{indentfirst}
+\usepackage{caption}
+
+\usepackage{colortbl}
+
+%\usepackage[table,xcdraw]{xcolor}
 
 % fonte Arial
 % \usepackage{helvet}
@@ -51,7 +56,7 @@
 
 \begin{resumo}
 
-Trata-se do relatório final do projeto de pesquisa de iniciação científica que compreende os trabalhos iniciados em março de 2021 até o final de fevereiro de 2022. O projeto visa estudar a exibição de objetos 3D em óculos inteligentes (\textit{Smart glasses}) com realidade aumentada, que podem servir como um dispositivo auxiliar para aplicações cirúrgicas. Para isso, pretende-se conceituar as relações entre visão computacional e computação gráfica no campo da realidade aumentada. Com o apoio do Laboratório Aeronáutico de Tecnologias (AeroTech), estudaremos uma forma de elaborar uma aplicação que sobreponha a cabeça de um paciente com um modelo 3D indicando pontos de implantação de eletrodos durante o procedimento neurocirúrgico orientado por estereoeletroencefalografia (\textit{SEEG}). 
+Trata-se do relatório final do projeto de pesquisa de iniciação científica que compreende os trabalhos iniciados em março de 2021 até o final de fevereiro de 2022. O projeto visa estudar a exibição de objetos 3D em óculos inteligentes (\textit{Smart glasses}) com realidade aumentada, que podem servir como um dispositivo auxiliar para aplicações cirúrgicas. Para isso, conceituamos as relações entre visão computacional e computação gráfica no campo da realidade aumentada. Com o apoio do Laboratório Aeronáutico de Tecnologias (AeroTech), definimos uma arquitetura de sistema que permite a sobreposição de um modelo 3D na cabeça de um paciente, indicando pontos de implantação de eletrodos durante o procedimento neurocirúrgico orientado por estereoeletroencefalografia (\textit{SEEG}). Essa arquitetura foi baseada na comunicação de computador e óculos pela rede local: O computador utiliza o método de detecção por mercadores fiduciais (\textit{ArUco}) para determinar a posição do paciente e informa os óculos onde a projeção deve ser exibida. Os resultados parciais da aplicação apresentam uma rápida responsividade com o método de estimação escolhido.
 
   \palavraschaves{\textit{Smart glasses}, Aplicação cirúrgica, Visão computacional, Realidade aumentada}
   
@@ -68,7 +73,7 @@ Trata-se do relatório final do projeto de pesquisa de iniciação científica q
 
 \input{2-Realizacoes}
 
-\input{3-Planejamento}
+\input{3-Extensao}
 
 \input{4-Eventos}
 

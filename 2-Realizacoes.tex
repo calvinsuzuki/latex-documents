@@ -266,7 +266,7 @@ A precisão da projeção, segundo o artigo, foi de \(2.1 \pm  1.3\,mm\) com a m
 
 Os resultados apresentados por essa pesquisa e que a conjectura apresentada na seção anterior - aplicação baseado no \textit{Unity} para a compatibilidade com mais óculos do mercado - foram confirmados possíveis. Contudo, antes de simplesmente seguir os passos de Maruyama, decidimos fazer uma listagem das arquiteturas utilizadas em outros sistemas para tentar ponderar suas características para optarmos pela opção que mais atende as necessidades da pesquisa.
 
-\section{Elaboração do VCranium}
+\section{Elaboração do VCranium}\label{chp:criacao-vcranium} 
 
 \subsection{Arquitetura do Sistema}
 
@@ -294,7 +294,7 @@ A parte prática da programação do sistema teve o desafio de conciliar a comun
 %     \label{fig:communication}
 % \end{figure}
 
-Nos testes iniciais, a tentativa foi realizar o processo contínuo de obturação de foto e envio dos dados via \textit{TCP} ao computador. Porém, ocasionalmente, a visualização da imagem era cortada horizontalmente, parecendo que "faltou um pedaço"\(\,\). Isso ocorre pois no processo de recepção de dados do \textit{socket}, a instrução de leitura não sabe o tamanho do arquivo a ser recebido da rede, i.e, o computador não saber o tamanho da imagem eventualmente causava a renderização parcial das informações da foto, resultando em uma imagem cortada.
+Nos testes iniciais, a tentativa foi realizar o processo contínuo de obturação de foto e envio dos dados via \textit{TCP} ao computador. Porém, ocasionalmente, a visualização da imagem era cortada horizontalmente, parecendo que "faltou um pedaço"\(\,\). Isso ocorre pois no processo de recepção de dados do \textit{socket}, a instrução de leitura não sabe o tamanho do arquivo a ser recebido da rede, i.e, o computador não saber o tamanho da imagem eventualmente causava a renderização parcial das informações da foto, resultando em uma imagem defeituosa.
 
 \begin{figure}[ht]
     \centering
@@ -312,7 +312,7 @@ Nos testes iniciais, a tentativa foi realizar o processo contínuo de obturaçã
         \end{subfigure}
         \caption{Resultados dos testes de comunicação Fonte: Autor.}
         \label{fig:comm-tests}
-    \end{figure}
+\end{figure}
 
 % \begin{figure}[ht]
 %     \centering
@@ -336,8 +336,6 @@ A aplicação objetiva exibir os detalhes da anatomia cerebral de um paciente em
 
 O método de estimação escolhido foi a detecção de marcadores fiduciais nativos da biblioteca do \textit{OpenCV}, o \textit{ArUco}. A estratégia de marcadores, especificamente os com forma quadrada, é comumente utilizada em aplicações de realidade aumentada pela sua rápida responsividade e robustez \cite{Romero-Ramirez2018}. Ele é especial por ter quatro pontos proeminentes (os quatro vértices) que facilitam sua detecção e seu conteúdo interno, preenchido com um padrão único, serve de identificador para o computador \cite{Poroykov2020}.
 
-O algoritmo da detecção \textit{ArUco} foi implementado junto ao programa \textit{Python} do computador. Esse módulo tem como entrada uma imagem dos óculos e saída as coordenadas da posição e rotação do marcador. Os dados são formatados em uma mensagem de tamanho fixo e enviado por \textit{TCP}, semelhante ao \textit{header} da imagem. Na rotina de execução dos óculos, ele primeiro obtura a imagem e envia para o computador, então ele espera a resposta com as informações do \textit{ArUco} correspondentes à imagem e por fim ele posiciona a projeção AR. Na detecção de quaisquer erros de formatação dos \textit{header}, são emitidos como erros fatais no programa, parando todos os processos da execução, vistos no fluxograma da figura \ref{fig:flowchart}.
-
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{figuras/flowchart.png}
@@ -347,13 +345,46 @@ O algoritmo da detecção \textit{ArUco} foi implementado junto ao programa \tex
 
 \newpage
 
+O algoritmo da detecção \textit{ArUco} foi implementado junto ao programa \textit{Python} do computador. Esse módulo tem como entrada uma imagem dos óculos e saída as coordenadas da posição e rotação do marcador. Os dados são formatados em uma mensagem de tamanho fixo e enviado por \textit{TCP}, semelhante ao \textit{header} da imagem. Na rotina de execução dos óculos, ele primeiro obtura a imagem e envia para o computador, então ele espera a resposta com as informações do \textit{ArUco} correspondentes à imagem e por fim ele posiciona a projeção AR. Na detecção de quaisquer erros de formatação dos \textit{header}, são emitidos como erros fatais no programa, parando todos os processos da execução, vistos no fluxograma da figura \ref{fig:flowchart}.
+
 \subsection{\textit{User Interface}}
+
+Para a criação da interface, demos mais atenção ao funcionamento da projeção das imagens nas lentes dos óculos. A tecnologia empregada é a \textit{Si-OLED (Silicon - Organic Light-Emitting Diode)} que tem a característica de exibir os \textit{pixels} pretos como regiões desligadas de \textit{LED}, i.e, áreas escuras são regiões transparentes e áreas claras são regiões visíveis. Pensando nisso, a interface apresenta as partes interativas mais claras, para chamar atenção do usuário, e um fundo preto para causar um efeito transparente (Figura \ref{fig:ui1}).
+
+% \begin{figure}[ht]
+%     \centering
+%         \begin{subfigure}{.45\textwidth}
+%             \centering
+%             \includegraphics[width=.95\linewidth]{figuras/planeta.png}
+%             \caption{Imagem modificada com fundo preto.}
+%             \label{fig:planet}
+%         \end{subfigure}
+%         \begin{subfigure}{.45\textwidth}
+%             \centering
+%             \includegraphics[width=.95\linewidth]{figuras/planetaAR.png}
+%             \caption{Exibição transparente nos óculos.}
+%             \label{fig:planetAR}
+%         \end{subfigure}
+%         \caption{As regiões escuras da imagem são vistos como transparência no \textit{display} dos óculos. Ilustração obtida de \cite{planet}. Fonte: Autor.}
+%         \label{fig:transparente}
+% \end{figure}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=.65\linewidth]{figuras/vcranium_connect.png}
-    \caption{Interface de conexão com computador. Fonte: Autor.}
-    \label{fig:vcranium-connect}
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\linewidth]{figuras/vcranium_main.png}
+            \caption{Menu principal do programa}
+            \label{fig:vcranium-connect}
+        \end{subfigure}
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\linewidth]{figuras/vcranium_connect.png}
+            \caption{Tela de conexão com computador}
+            \label{fig:vcranium2-connect}
+        \end{subfigure}
+        \caption{Imagens da interface do \textit{VCranium}. Fonte: Autor.}
+        \label{fig:ui1}
 \end{figure}
 
 
