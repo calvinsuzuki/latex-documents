@@ -1,50 +1,22 @@
-\documentclass[Portugues]{projetoFAPESP}
+\documentclass{ArticleUSP}
 
 \addbibresource{bibliografia.bib}
 
-\setlength{\parindent}{4em}
-\setlength{\parskip}{0.77em}
-
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage{hyperref}
-\usepackage{bookmark}
-\usepackage{mathtools}
-\usepackage{listings}
-\usepackage{multirow}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{comment}
-\usepackage{subcaption}
-\usepackage{indentfirst}
-\usepackage{caption}
-
-\usepackage{colortbl}
-
-%\usepackage[table,xcdraw]{xcolor}
-
-% fonte Arial
-% \usepackage{helvet}
-% \renewcommand{\familydefault}{\sfdefault}
-
-%% Página de título
+%% Dados universidade
 \universidade{Universidade de São Paulo}
 \faculdade{Escola de Engenharia de São Carlos}
 \cidade{São Carlos}
 
-\titulo{Posicionamento e exibição de imagens 3D utilizando óculos de realidade aumentada para aplicação cirúrgica}
+\titulo{Projeto de Aprendizado de Máquina}
+\entregaProjeto{Primeira entrega}
+\modalidadeProjeto{de relatório científico}
+\disciplina{Aprendizado de Máquina}{SCC0276}
 
-\Proj{2020/15835-4}
-\agFomento{Fundação de Amparo à Pesquisa do Estado de São Paulo}{FAPESP}
-\modalidadeProjeto{de auxílio à iniciação científica}
+\membroA{Calvin Suzuki}{11232420}
+\membroB{Guilherme Soares Silvestre}{11299832}
+\membroC{Vitor Fernando Rinaldini}{11232305}
 
-\professor{Glauco Augusto de Paula Caurin}{Dr.}
-\Coorientador{Paulo Henrique Polegato}{}
-\beneficiario{Calvin Suzuki de Camargo}
-
-\inicioPeriodoVigencia{01}{03}{2021}
-\periodoRelatorio{28}{02}{2022}
-\fimPeriodoVigencia{28}{02}{2022}
+\professor{Fernando Pereira dos Santos}{Prof.}
 
 \begin{document}
 
@@ -52,30 +24,31 @@
 
 \geraTitulo
 
-\folhaDeRosto
+% \begin{resumo}
 
-\begin{resumo}
+%   Texto
 
-Trata-se do relatório final do projeto de pesquisa de iniciação científica que compreende os trabalhos iniciados em março de 2021 até o final de fevereiro de 2022. O projeto visa estudar a exibição de objetos 3D em óculos inteligentes (\textit{Smart glasses}) com realidade aumentada, que podem servir como um dispositivo auxiliar para aplicações cirúrgicas. Para isso, conceituamos as relações entre visão computacional e computação gráfica no campo da realidade aumentada. Com o apoio do Laboratório Aeronáutico de Tecnologias (AeroTech), definimos uma arquitetura de sistema que permite a sobreposição de um modelo 3D na cabeça de um paciente, indicando pontos de implantação de eletrodos durante o procedimento neurocirúrgico orientado por estereoeletroencefalografia (\textit{SEEG}). Essa arquitetura foi baseada na comunicação de computador e óculos pela rede local: O computador utiliza o método de detecção por mercadores fiduciais (\textit{ArUco}) para determinar a posição do paciente e informa os óculos onde a projeção deve ser exibida. Os resultados parciais da aplicação apresentam uma rápida responsividade com o método de estimação escolhido.
-
-  \palavraschaves{\textit{Smart glasses}, Aplicação cirúrgica, Visão computacional, Realidade aumentada}
+%   \palavraschaves{\textit{Smart glasses}, Aplicação cirúrgica, Visão computacional, Realidade aumentada}
   
-\end{resumo}
+% \end{resumo}
 
 \clearpage
+
 \tableofcontents
+
 \thispagestyle{empty}
+
 \clearpage
 
 \pagenumbering{arabic}
 
-\input{1-Resumo}
+\input{1-Introducao}
 
-\input{2-Realizacoes}
+\input{2-Datasets}
 
-\input{3-Extensao}
+\input{3-Benchmarks}
 
-\input{4-Eventos}
+\input{4-Proposta}
 
 % Referências bibliográficas
 \printbibliography[heading=bibintoc, title={Referências bibliográficas} ]
