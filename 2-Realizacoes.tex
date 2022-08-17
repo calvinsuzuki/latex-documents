@@ -2,16 +2,14 @@
 
 \section{Revisão bibliográfica}\label{chp:biblio}
 
-Buscando a sanar as dificuldades encontradas relacionadas a calibração da da sobreposição da projeção da realidade aumentada, foram pesquisados referências que esclareçam o fundamento matemático dessa transformação. [Procurar artigo de exemplo].
-
-O vídeo \textit{Augmented Reality: Camera Calibration}, do autor Pavel Rojtberg, detalhou os conceitos da calibração e presentou a abordagem matemática do problema \cite{augmented-calib}. Segundo a conferência, uma projeção em AR pode ser modelada com uma função \(f\) que faz a transformação de um ponto de um espaço 3D (modelo virtual) para um espaço 2D (visualização), definida por: 
+Buscando a sanar as dificuldades encontradas relacionadas a calibração da da sobreposição da projeção da realidade aumentada, foram pesquisados referências que esclareçam o fundamento matemático dessa transformação. O vídeo \textit{Augmented Reality: Camera Calibration}, do autor Pavel Rojtberg, detalhou os conceitos da calibração com uma abordagem matemática do problema \cite{augmented-calib}. Segundo Pavel, uma projeção em AR pode ser modelada com uma função \(f\) que faz a transformação de um ponto de um espaço 3D (modelo virtual) para um espaço 2D (visualização), definida por: 
 \begin{gather*}
     f(P,\,R,\,t,\,C) = p \\
     \text{$p$: ponto (x,y) da projeção; ~$P$: ponto (X,Y,Z) do modelo} \\
     \text{$R$: parâmetro de rotação; ~$t$: parâmetro de translação} \\
     \text{$C$: parâmetro de distorção da câmera} 
   \end{gather*}
-Os parâmetros R e t são matrizes descrevem a rotação e a posição da câmera que, em condições normais, são constantes e chamados de parâmetros extrínsecos da câmera. O parâmetro C é uma matriz que modela as deformações da construção da lente da câmera, particular para cada dispositivo de captura de imagem. As deformações variam sua intensidade e modo de 
+Os parâmetros R e t são matrizes que descrevem a rotação e a posição da câmera que, em condições normais, são constantes e chamados de parâmetros extrínsecos da câmera. O parâmetro C é uma matriz que modela as deformações da construção da lente da câmera, particular para cada dispositivo de captura de imagem. As deformações variam sua intensidade e modo de 
 
 \begin{figure}[H]
     \centering
@@ -60,7 +58,7 @@ A deformação pode ser separada em duas componentes: radial e tangencial (Figur
 
 \section{VCranium}\label{chp:vcranium} 
 
-Durante o primeiro período de um ano da pesquisa, foi possível definir uma arquitetura adequada para a aplicação à AR em neurocirurgias e um nome fantasia: \textit{VCranium}. Em sumo, o sistema foi dividido em computador e óculos: O computador estima a posição da projeção e os óculos exibem as imagens nos olhos do usuário. Esse sistema foi inspirado no artigo de Maruyama, que utilizou um \textit{software} de visualização médica em um computador, que fazia o envio dos dados para os óculos \textit{AR} utilizando o \textit{Unity} \cite{Maruyama2018}.
+Durante o primeiro período de um ano da pesquisa, foi possível definir uma arquitetura adequada para a aplicação à AR em neurocirurgias e um nome fantasia: \textit{VCranium}. De forma concisa, o sistema foi dividido em computador e óculos: O computador estima a posição da projeção e os óculos exibem as imagens nos olhos do usuário. Esse sistema foi inspirado no artigo de Maruyama, que utilizou um \textit{software} de visualização médica em um computador, que fazia o envio dos dados para os óculos \textit{AR} utilizando o \textit{Unity} \cite{Maruyama2018}.
 
 \begin{figure}[ht]
     \centering
@@ -89,7 +87,7 @@ Após esse último processo, utilizamos os parâmetros encontrados para realizar
     \label{fig:error-calib}
 \end{figure}
 
-Compreendendo a abordagem do assunto apresentado por Pavel e a divisão entre parâmetros extrínsecos e intrínsecos da projeção, foi possível representar o problema enfrentado pelo projeto na Figura \ref{fig:calib-proj-comp}.
+Compreendendo a abordagem do assunto apresentado pela referência e o fundamento da divisão entre parâmetros extrínsecos e intrínsecos da projeção, foi possível representar o problema enfrentado pelo projeto na Figura \ref{fig:calib-proj-comp} \cite{augmented-calib}.
 
 \begin{figure}[H]
     \centering
@@ -123,7 +121,7 @@ Compreendendo a abordagem do assunto apresentado por Pavel e a divisão entre pa
 
 \section{Implementação}\label{chp:impl}
 
-A figura \ref{fig:calib-proj-comp} facilita a explicação dos problemas enfrentados pela calibração AR. O primeiro exemplo da Figura \ref{fig:calib-proj-without}, representa o problema encontrado pela última entrega (Figura \ref{fig:error-calib}) que consiste na total inconsistência de orientação do modelo em relação à referência. Para solucionar isso, foi implementado ajustes no código em \textit{C\#} da plataforma \textit{Unity} para realizar um ajuste de posição e rotação manual. Podemos verificar isso com a Figura \ref{fig:extr-comp}.
+A figura \ref{fig:calib-proj-comp} facilita a explicação dos problemas enfrentados pela calibração AR. O primeiro exemplo da Figura \ref{fig:calib-proj-without}, representa o problema encontrado pela última entrega (Figura \ref{fig:error-calib}) que consiste na total inconsistência de orientação do modelo em relação à referência. Para solucionar isso, foi implementado ajustes no código em \textit{C\#} da plataforma \textit{Unity} para realizar um ajuste de posição e rotação manual \cite{UnityOficial}. Podemos verificar isso com a Figura \ref{fig:extr-comp}.
 
 \begin{figure}[H]
     \centering
@@ -143,6 +141,6 @@ A figura \ref{fig:calib-proj-comp} facilita a explicação dos problemas enfrent
     \label{fig:extr-comp}
 \end{figure}
 
-Foi possível perceber na prática que o ajuste de rotação e posição da projeção é o mesmo que uma calibração extrínseca, por isso, observando a Figura \ref{fig:extr1}, a projeção sobrepõe bem o marcador, porém, na mesma configuração, o mesmo não ocorre em outra região da tela. A Figura \ref{fig:extr2} mostra que erro da projeção se altera conforme mudamos a posição do marcador no mundo real, mostrando que não há solução constante de rotação e posição que realize uma sobreposição consistente em todas as partes da tela.
+Foi possível perceber que o ajuste de rotação e posição da projeção é o mesmo que uma calibração extrínseca, por isso, observando a Figura \ref{fig:extr1}, a projeção sobrepõe bem o marcador, porém, na mesma configuração, o mesmo não ocorre em outra região da tela. A Figura \ref{fig:extr2} mostra que erro da projeção se altera conforme mudamos a posição do marcador no mundo real, mostrando que não há solução constante de rotação e posição que realize uma sobreposição consistente em todas as partes da tela.
 
 Esse fenômeno é causado pelas diferentes deformações que a imagem da câmera possui, visto também no diagrama da Figura \ref{fig:distort-diagram}. Nesse exemplo, a projeção pode ser muito boa nas regiões azuis da imagem, porém, obtemos erros grandes nas regiões vermelhas. A ilustração criada na Figura \ref{fig:calib-proj-comp} consiste em uma imagem muito deformada, i.e, a imagem toda possui um grau de deformação radial e tangencial. Isso implica na impossibilidade da sobreposição ocorrer ao utilizar a calibração puramente extrínseca, como é observado em \ref{fig:calib-proj-extr}, observamos que a projeção terá um erro variável em sua extensão.
