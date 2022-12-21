@@ -58,6 +58,10 @@
 \newcommand{\professor}[2]{\def\nomeProf{#1}
                        \def\tituloProf{#2}
                       }
+ % Professor2
+\newcommand{\professorB}[2]{\def\nomeProfB{#1}
+                       \def\tituloProfB{#2}
+                      }
  % Dados universidade e instituto
 \newcommand{\cidade}[1]{\def\nomeCidade{#1}}
 \newcommand{\universidade}[1]{\def\nomeUniversidade{#1}}
@@ -88,7 +92,7 @@
 \clearpage
 \begin{titlepage}
   \begin{center}
-        \vspace*{-7cm}
+        \vspace*{-6cm}
        { \setstretch{.5} 
          \textsc{\nomeUniversidade} \\
          \HRule{.2pt}\\
@@ -97,10 +101,11 @@
     
     \begin{figure}
         \centering
-        \includegraphics[width=0.55\textwidth]{figuras/eesc.png}
+        \includegraphics[width=0.45\textwidth]{figuras/eesc.png}
         \label{fig:my_label}
     \end{figure}
-    \vspace*{\fill}
+
+    \vspace*{5cm}
 
     \Large \textbf{\textsc{\meuTitulo}}
  	\HRule{1.5pt} \\ [0.5cm]
@@ -115,39 +120,48 @@
        \fi. \\ 
    	\HRule{1.5pt} \\ [0.5cm]   	
 
-    Docente: \tituloProf \space \nomeProf
- 
+    \ifdefined\tituloProfB
+        Docentes: 
+        
+        \tituloProf \space \nomeProf \ \& \ \tituloProfB \space \nomeProfB
+    \else
+        Docente: 
+        
+        \tituloProf \space \nomeProf
+    \fi
+    
     Equipe: 
-
-    % \begin{tabbing}
-    %   \centering
-    %   Calvin Suzuki \hspace{50pt} \= Calvin Suzuki \hspace{50pt} \= Calvin Suzuki \\
-    %   NUSP: 12345678 \> NUSP: 12345678 \> NUSP: 12345678
-    % \end{tabbing}
     
-    \ifdefined\nomeMembroA
-      \nomeMembroA \qquad NUSP: \nuspA
-    \fi
-
-    \ifdefined\nomeMembroB
-      \nomeMembroB \qquad NUSP: \nuspB
-    \fi
-
-    \ifdefined\nomeMembroC
-      \nomeMembroC \qquad NUSP: \nuspC
-    \fi
-
-    \ifdefined\nomeMembroD
-      \nomeMembroD \qquad NUSP: \nuspD
-    \fi
-    
-    \ifdefined\nomeMembroE
-      \nomeMembroE \qquad NUSP: \nuspE
-    \fi
-    
-    \ifdefined\nomeMembroF
-      \nomeMembroF \qquad NUSP: \nuspF
-    \fi
+    \begin{table}[H]
+      \large
+      \centering
+      \begin{tabular}{ll}
+        \ifdefined\nomeMembroA
+          \nomeMembroA & NUSP: \nuspA \\
+          \hfill \\
+        \fi
+        \ifdefined\nomeMembroB
+          \nomeMembroB & NUSP: \nuspB \\
+          \hfill \\
+        \fi
+        \ifdefined\nomeMembroC
+          \nomeMembroC & NUSP: \nuspC \\
+          \hfill \\
+        \fi
+        \ifdefined\nomeMembroD
+          \nomeMembroD & NUSP: \nuspD \\
+          \hfill \\
+        \fi
+        \ifdefined\nomeMembroE
+          \nomeMembroE & NUSP: \nuspE \\
+          \hfill \\
+        \fi
+        \ifdefined\nomeMembroF
+          \nomeMembroF & NUSP: \nuspF \\
+          \hfill \\
+        \fi
+      \end{tabular}
+      \end{table}
 
     \vfill
        
