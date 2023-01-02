@@ -47,6 +47,7 @@ O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera 
 \end{figure}
 
 \[ MTX = 
+\renewcommand\arraystretch{.8}
 \begin{bmatrix}
     f_x & 0 & c_x \\
     0 & f_y & c_y \\
@@ -54,17 +55,26 @@ O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera 
 \end{bmatrix} \]
 
 % DESCREVER PARAMETROS Sendo \(f_x\) o foco em X da câmera e
-Utilizamos o \(f_x\) ou \(f_y\) da câmera e a informação das dimensões da imagem em \textit{pixels} para obter o \textit{FOV} em X e Y: 
+Utilizamos as distâncias focais da câmera, \(f_x\) ou \(f_y\), e a informação das dimensões da imagem em \textit{pixels} para obter o \textit{FOV} em X e Y: 
 
 \[
 FOV_x = 2 \arctan \left( \dfrac{w}{2f_x} \right) ;
 \ \ \ FOV_y = 2 \arctan \left( \dfrac{h}{2f_y} \right) 
 \]
     
-Sendo \(w\) e \(h\) a largura e a altura em \textit{pixels}, respectivamente. Não existe diferença utilizar qualquer um dos dois, pois o \textit{Unity} suporta a configuração de ambos na câmera virtual.
+Sendo \(w\) e \(h\) a largura e a altura em \textit{pixels}, respectivamente. Não existe diferença em utilizar qualquer um dos dois, pois o \textit{Unity} suporta ambas as configurações no objeto da câmera virtual.
     
 \subsection{Distorção}
 
+% https://en.wikipedia.org/wiki/Pinhole_camera
+% https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html
+% https://en.wikipedia.org/wiki/Distortion_%28optics%29
+A documentação do \textit{OpenCV} baseia-se na câmera \textit{pinhole} e modela duas principais distorções: radial e tangencial. 
+
+\begin{description}
+    \item[Radial] A distorção radial é percebida como retas se curvando em relação ao centro. Quanto mais longe do centro da imagem, mais distorção radial ocorre.
+    \item[Tangencial] 
+\end{description}
 Como foi mencionado no item anterior, a calibração também resulta em um vetor que modela as distorções de imagem da câmera. 
 
 
