@@ -37,7 +37,7 @@ Da mesma forma que a rotação, a translação é recebida do \textit{TVEC} da m
 
 \subsection{\textit{Field of View}}
 
-O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera com o \textit{chessboard} que calcula a distorção e os intrínsecos da câmera, nomeados respectivamente de \textit{DIST} e \textit{MTX}. Para determinar o \textit{FOV} da câmera observamos \textit{MTX}:
+O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera com o \textit{chessboard} que calcula a distorção e os intrínsecos da câmera, nomeados respectivamente de \textit{DIST} e \textit{MTX}. Para determinar o \textit{FOV} da câmera observamos \textit{MTX} [FONTE]:
 
 \begin{figure}[ht]
     \centering
@@ -48,7 +48,7 @@ O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera 
 
 \[ MTX = 
 \begin{bmatrix}
-    f_x & 0 & c_x \\    
+    f_x & 0 & c_x \\
     0 & f_y & c_y \\
     0 & 0 & 1
 \end{bmatrix} \]
@@ -61,7 +61,7 @@ FOV_x = 2 \arctan \left( \dfrac{w}{2f_x} \right) ;
 \ \ \ FOV_y = 2 \arctan \left( \dfrac{h}{2f_y} \right) 
 \]
     
-Sendo \(w\) e \(h\) a largura e a altura em \textit{pixels}, respectivamente. Não há diferença utilizar qualquer um dos dois, o \textit{Unity} suporta a configuração de ambos na câmera virtual, foi escolhido o \textit{FOV} em X pois é mais frequentemente usado na indústria. 
+Sendo \(w\) e \(h\) a largura e a altura em \textit{pixels}, respectivamente. Não existe diferença utilizar qualquer um dos dois, pois o \textit{Unity} suporta a configuração de ambos na câmera virtual.
     
 \subsection{Distorção}
 
