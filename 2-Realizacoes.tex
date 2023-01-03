@@ -72,9 +72,27 @@ Sendo \(w\) e \(h\) a largura e a altura em \textit{pixels}, respectivamente. N�
 A documentação do \textit{OpenCV} baseia-se na câmera \textit{pinhole} e modela duas principais distorções: radial e tangencial. 
 
 \begin{description}
-    \item[Radial] A distorção radial é percebida como retas se curvando em relação ao centro. Quanto mais longe do centro da imagem, mais distorção radial ocorre.
-    \item[Tangencial] 
+    \item[Radial:] A distorção radial é percebida como retas se curvando em relação ao centro. Causada pela fabricação da forma circular das lentes, o que contribui para um maior campo de visão.
 \end{description}
+\[ x_{distorted} = x(1+k_1 r^2 + k_2 r^4 + k_3 r^6) \]
+\[ y_{distorted} = y(1+k_1 r^2 + k_2 r^4 + k_3 r^6) \]
+\begin{figure}[H] % https://learnopencv.com/understanding-lens-distortion/
+    \centering
+    \includegraphics[width=.65\linewidth]{figuras/radial-dist.png}
+    \caption{Exemplos de distorção radial. Fonte: Autor.}
+    \label{fig:radial_dist}
+\end{figure}
+\begin{description}
+    \item[Tangencial:] A distorção tangencial é percebida em regiões da imagem que parecem mais próximas ou mais distantes da câmera de forma não uniforme. Causada pelas tolerâncias de paralelismo da montagem do sensor com as lentes dentro do equipamento.
+\end{description}
+\[ x_{distorted} = x + 2 p_1 x y + p_2 (r^2 + 2x^2)\]
+\[ y_{distorted} = y + p_1(r^2+2y^2)+2p_2xy\]
+\begin{figure}[H] % https://learnopencv.com/understanding-lens-distortion/
+    \centering
+    \includegraphics[width=.65\linewidth]{figuras/tan-dist.png}
+    \caption{Exemplos de distorção tangencial. Fonte: Autor.}
+    \label{fig:tan_dist}
+\end{figure}
 Como foi mencionado no item anterior, a calibração também resulta em um vetor que modela as distorções de imagem da câmera. 
 
 
