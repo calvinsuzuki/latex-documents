@@ -1,8 +1,8 @@
 \chapter{Realizações}\label{chp:realizacoes}
 
-\section{Calibração}
+\section{Calibração}\label{chp:calibr}
 
-O processo de calibração do \textit{VCranium} foi complexo por abranger diversos conceitos e a sua aplicabilidade na plataforma do \textit{Unity} \cite{UnityOficial}. Decidimos fragmentar o problema e estudá-los separadamente:
+O processo de calibração do \textit{VCranium} foi complexo por abranger diversos conceitos de visão computacional e sua aplicabilidade na plataforma do \textit{Unity} \cite{UnityOficial}. Decidimos fragmentar o problema e estudá-los separadamente:
 
 \begin{description}
     \item[Rotação:] Realizado com o \textit{RVEC} de \textit{Rodrigues} de cada \textit{frame};
@@ -26,7 +26,7 @@ Um método foi implementado para a formatar cada mensagem gerada pela detecção
 
 \subsection{Translação}
 
-Da mesma forma que a rotação, a translação é recebida do \textit{TVEC} da mensagem da Figura \ref{fig:frodrigues}. Nesta a informação é recebida em milímetros, portanto, devemos ajustar a escala da translação manualmente para corrigir a projeção do marcador no mundo virtual do \textit{Unity}. Com a rotação e translação completas, temos a calibração extrínseca da projeção. Assim como foi explicado no último relatório, a projeção deve estar visualmente boa, especialmente nas regiões centrais da tela, representado na Figura \ref{fig:Extrinsecos}.
+Da mesma forma que a rotação, a translação é recebida do \textit{TVEC} da mensagem da Figura \ref{fig:frodrigues}. Nesta, a informação é recebida em milímetros, portanto, devemos ajustar a escala da translação manualmente para corrigir a projeção do marcador no mundo virtual do \textit{Unity}. Com a rotação e translação completas, temos a calibração extrínseca da projeção. Assim como foi explicado no último relatório, a projeção deve estar visualmente boa, especialmente nas regiões centrais da tela, representado na Figura \ref{fig:Extrinsecos}.
 
 \begin{figure}[ht]
     \centering
@@ -37,7 +37,7 @@ Da mesma forma que a rotação, a translação é recebida do \textit{TVEC} da m
 
 \subsection{\textit{Field of View}}
 
-O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera com o \textit{chessboard} que calcula a distorção e os intrínsecos da câmera, nomeados respectivamente de \textit{DIST} e \textit{MTX}. Para determinar o \textit{FOV} da câmera observamos \textit{MTX} [FONTE]:
+O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera com o \textit{chessboard} que calcula a distorção e os intrínsecos da câmera, nomeados respectivamente de \textit{DIST} e \textit{MTX}. Para determinar o \textit{FOV} da câmera observamos a matriz \textit{MTX} [FONTE]:
 
 \begin{figure}[ht]
     \centering
@@ -67,7 +67,7 @@ Sendo \(w\) e \(h\) a largura e a altura em \textit{pixels}, respectivamente. N�
 \subsection{Distorção}
 
 % https://en.wikipedia.org/wiki/Pinhole_camera
-% https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html
+% https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibrationtutorial_py_calibration.html
 % https://en.wikipedia.org/wiki/Distortion_%28optics%29
 A documentação do \textit{OpenCV} baseia-se na câmera \textit{pinhole} e modela duas principais distorções: radial e tangencial. 
 
@@ -83,17 +83,64 @@ A documentação do \textit{OpenCV} baseia-se na câmera \textit{pinhole} e mode
     \label{fig:radial_dist}
 \end{figure}
 \begin{description}
-    \item[Tangencial:] A distorção tangencial é percebida em regiões da imagem que parecem mais próximas ou mais distantes da câmera de forma não uniforme. Causada pelas tolerâncias de paralelismo da montagem do sensor com as lentes dentro do equipamento.
+    \item[Tangencial:] A distorção tangencial é percebida em regiões da imagem que parecem mais próximas ou mais distantes da câmera de forma não uniforme. Causada pelas tolerâncias de paralelismo da montagem do sensor com as lentes internas do equipamento.
 \end{description}
 \[ x_{distorted} = x + 2 p_1 x y + p_2 (r^2 + 2x^2)\]
 \[ y_{distorted} = y + p_1(r^2+2y^2)+2p_2xy\]
-\begin{figure}[H] % https://learnopencv.com/understanding-lens-distortion/
+\begin{figure}[H] 
     \centering
     \includegraphics[width=.65\linewidth]{figuras/tan-dist.png}
     \caption{Exemplos de distorção tangencial. Fonte: Autor.}
     \label{fig:tan_dist}
 \end{figure}
-Como foi mencionado no item anterior, a calibração também resulta em um vetor que modela as distorções de imagem da câmera. 
+
+Utilizando as fórmulas apresentadas acima e os parâmetros intrínsecos \(f_x \ f_y \ c_x \ c_y\) e distorção \(k_1 \ k_2 \ k_3 \ p_1 \ p_2\), tem-se todas as variáveis necessárias para a modelagem da câmera com \textit{OpenCV}:
+
+\[ DIST = [ k_1 \ k_2 \ p_1 \ p_2 \ k_3 ]; \ \ \ \ \ \ \ \
+MTX = 
+\renewcommand\arraystretch{.8}
+\begin{bmatrix}
+    f_x & 0 & c_x \\
+    0 & f_y & c_y \\
+    0 & 0 & 1
+\end{bmatrix};\]
+
+\section{Desenvolvimento Unity}
+
+Trazendo a teoria apresentada na Seção \ref{chp:calibr} para a realidade no ambiente de desenvolvimento do \textit{Unity}. Para isso, deve-se organizar de ''cenas'', onde o usuário pode transitar utilizando a interface, como na Figura \ref{fig:ui1}, e utilizar a linguagem C\# como \textit{back-end} para a criação de \textit{scripts}.
+
+\begin{figure}[ht]
+    \centering
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\linewidth]{figuras/vcranium_main.png}
+            \caption{Menu principal do programa}
+            \label{fig:vcranium-connect}
+        \end{subfigure}
+        \begin{subfigure}{.45\textwidth}
+            \centering
+            \includegraphics[width=.95\linewidth]{figuras/vcranium_connect.png}
+            \caption{Tela de conexão com computador}
+            \label{fig:vcranium2-connect}
+        \end{subfigure}
+        \caption{Imagens da interface do \textit{VCranium}. Fonte: Autor.}
+        \label{fig:ui1}
+\end{figure}
+
+\subsection{Ajuste dos intrínsecos}
+
+A Seção \ref{chp:calibr} também explicita que obtemos todos os parâmetros intrínsecos e de distorção de uma câmera após a calibração com o método do \textit{chessboard} (Figura \ref{fig:chess_calib}). Porém, é necessário um método que realize a calibração da câmera em que o \textit{VCranium} está sendo executado, para isso, deve-se criar um método auxiliar que capture uma série de imagens e envie para o computador calibrar e encontrar os parâmetros.
+
+A principal ideia que se tem ao criar esse sistema é receber uma imagem assim que o usuário pressionar o botão de captura. Assim como foi estudado em relatórios anteriores, é necessário construir um \textit{header} simples que antecede o envio da imagem para o servidor preparar a sua recepção, e então, guardar a informação de cada imagem em uma lista auxiliar. O próximo passo é usar o comando \textit{calibrateCamera} da biblioteca do \textit{OpenCV} e o programa retorna as informações necessárias (\(f_x, \ f_y, \ c_x, \ c_y, \ k_1, \ k_2, \ k_3, \ p_1, \ p_2\)).
+
+O desenvolvimento desse programa auxiliar não apresenta maiores desafios se comparado com o histórico do projeto desde 2021. No entanto, assim que o aplicativo \textit{Unity} receber todos os parâmetros, não é trivial a distorção do modelo para a sobreposição em uma aplicação de realidade do tipo \textit{VST} (\textit{Video See-Through}).
+
+Visto que seria necessário um estudo mais aprofundado no assunto de calibração, elaboração de conceitos da disciplina de Computação Gráfica para a vista em perspectiva, e a aplicação desse trabalho seriam restritos somente ao modelo \textit{VST}, foi decidido privar a calibração intrínseca do projeto no dado momento.
+
+
+
+Certamente a Figura \ref{fig:Extrinsecos} mostra que ao fim da calibração extrínseca, a sobreposição é visualmente boa, i.e., em boa parte da ilustração, o erro da sobreposição é insignificante e, com isso, não apresenta problemas para demonstração de conceitos.
+
 
 
     % \section{Estudos de desenvolvimento Unity}
@@ -102,12 +149,6 @@ Como foi mencionado no item anterior, a calibração também resulta em um vetor
     
     % O \textit{Vuforia} foi o primeiro \textit{plugin} a ser testado no ambiente do \textit{Unity} \cite{Vuforia}. Em fevereiro de 2022, ele apresenta mais opções rastreio para AR, mas no início de 2021, no momento em que foi experimentado pela pesquisa, as opções eram de usar imagens e algumas formas 3D como marcadores para suas projeções. Foi testado a detecção de imagem com um pedaço da logo da \textit{Coca-cola\texttrademark} como alvo, a figura \ref{fig:vuforia-tests} ilustra os resultados.
 
-% \begin{figure}[ht]
-%     \centering
-%     \includegraphics[width=.85\linewidth]{figuras/Vuforia.png}
-%     \caption{Testes com diferentes modelos de diferentes complexidades, constatando performance acima de 15 quadros por segundo em todos os casos. Fonte: Autor.}
-%     \label{fig:vuforia-tests}
-% \end{figure}
 
 % As formas de detecção tridimensionais não eram compatíveis com a detecção da posição da cabeça de um paciente, por isso esse recurso não foi testado. O \textit{Vuforia} é uma ferramenta que trabalha com \textit{Android} de \textit{API} 23 ou superior, infelizmente, também incompatível com o \textit{Moverio BT-350} que possui uma \textit{API} 22 e sem chances de atualização. Outras ferramentas foram encontradas como o \textit{Wikitude\texttrademark} que também era para \textit{API} 23 \cite{wikitudes}, porém uma outra ferramenta denominada \textit{ARFoundation} que estima a posição da face humana chamou a atenção por termos a oportunidade de criar uma demonstração da ideia final do projeto nos óculos \cite{arfoundation-docs}.
 
