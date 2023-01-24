@@ -26,7 +26,9 @@ O projeto já possui uma arquitetura que permite a alteração da forma de final
     \label{fig:head-markers}
 \end{figure}
 
-A aplicação atual de marcadores do projeto pode ser vista na Figura \ref{fig:head-markers}a. Podemos observar que o sistema pode estimar a posição da cabeça em somente sua parte frontal, portanto, o sistema não funciona se observamos as laterais e atrás da cabeça. A Figura \ref{fig:head-markers}b traz uma solução a esse problema posicionando 5 marcadores em todos os lados da cabeça, assim o sistema pode estimar a posição do cérebro individualmente (Figura \ref{fig:tiara}).
+Atualmente, o projeto aplica os marcadores como na Figura \ref{fig:head-markers}a. Dessa forma, o sistema está limitado a estimar a posição da cabeça somente em sua face frontal, i.e., não identifica as laterais e face traseira da cabeça. Uma solução para esse problema é proposto na Figura \ref{fig:head-markers}b, que invés de um único marcador, múltiplos marcadores são colocados em todas os lados da cabeça, com a de reconhecer a sua posição independentemente em cada marcador.
+
+% A aplicação atual de marcadores do projeto pode ser vista na Figura \ref{fig:head-markers}a. Podemos observar que o sistema pode estimar a posição da cabeça em somente sua parte frontal, portanto, o sistema não funciona se observamos as laterais e atrás da cabeça. A Figura \ref{fig:head-markers}b traz uma solução a esse problema posicionando 5 marcadores em todos os lados da cabeça, assim o sistema pode estimar a posição do cérebro individualmente (Figura \ref{fig:tiara}).
 
 \begin{figure}[ht]
     \centering
@@ -35,7 +37,7 @@ A aplicação atual de marcadores do projeto pode ser vista na Figura \ref{fig:h
     \label{fig:tiara}
 \end{figure}
 
-Esse método utiliza transformações de base, fundamentados da disciplina de Geometria Analítica e Álgebra Linear, para a estimar a posição central da cabeça e sua orientação. Para isso, deve-se saber a posição e orientação de cada marcador em relação ao centro da cabeça e, visto que os tamanhos da cabeça variam, encontra-se a necessidade de uma calibração para cada paciente. Pensando na impossibilidade do contato direto do marcador com a pele do paciente e a possível oclusão do marcador por ferramentas e as mãos do médico, esse método se torna uma opção menos viável para situações cirúrgicas.
+Uma forma de posicionar múltiplos marcadores é utilizar uma "tiara" para portá-los, um esboço desse objeto foi construído com papel na Figura \ref{fig:tiara}. Esse método utiliza transformações de base, fundamentados da disciplina de Geometria Analítica e Álgebra Linear, para a estimar a posição central da cabeça e sua orientação. Para isso, deve-se saber a posição e orientação de cada marcador em relação ao centro da cabeça e, visto que os tamanhos da cabeça variam, encontra-se a necessidade de uma calibração para cada paciente. Pensando na impossibilidade do contato direto do marcador com a pele do paciente e a possível oclusão do marcador por ferramentas e as mãos do médico, esse método se torna uma opção menos viável para situações cirúrgicas.
 
 Uma solução alternativa seria utilizar múltiplos marcadores distantes do pacientes, mas ainda visíveis na câmera dos óculos como na Figura \ref{fig:cube}. Os marcadores em formato de cubo facilitam e a montagem a calibragem de cada marcador em relação ao centro da cabeça.
 
@@ -46,7 +48,7 @@ Uma solução alternativa seria utilizar múltiplos marcadores distantes do paci
     \label{fig:cube}
 \end{figure}
 
-Por fim, o projeto vai aproveitar o tempo de extensão para fazer um pedido de Bolsa Estágio de Pesquisa no Exterior (BEPE) para buscar formação com grupos de pesquisa do exterior. O intercâmbio, além de colocar a comunicação acadêmica em prática, tem a oportunidade de receber críticas aprofundadas e criativas no assunto de realidade aumentada, visto que muito desses equipamentos não são vendidos no Brasil.
+Por fim, o projeto vai aproveitar o tempo de extensão para fazer um pedido de Bolsa Estágio de Pesquisa no Exterior (BEPE) para buscar cooperação com grupos de pesquisa do exterior. O intercâmbio, além de colocar a comunicação acadêmica em prática, tem a oportunidade de receber críticas aprofundadas e criativas no assunto de realidade aumentada, visto que muito desses equipamentos são raramente vendidos no Brasil.
 
 \newpage
 
@@ -55,24 +57,25 @@ Por fim, o projeto vai aproveitar o tempo de extensão para fazer um pedido de B
 O controle de atividades vai ser feito com encontros mensais e semanais com o coorientador, orientador e integrantes do laboratório. Um cronograma foi elaborado na tabela \ref{fig:tabela} para servir de guia para o progresso do projeto.
 
 \begin{table}[h]
-    \begin{tabular}{llllllll} 
-        \hline
-\multicolumn{8}{c}{\textbf{Cronograma de atividades para a extensão}} \\ 
-\hline
-& & & {\cellcolor[rgb]{.3,.3,1}} & \multicolumn{4}{l}{Execução} \\ 
-    \hline
- \textbf{Atividade} & \textbf{Bimestre} & 1 & 2 & 3 & 4 & 5 & 6 \\ 
-    \hline
- \begin{tabular}[c]{@{}>{}l@{}}Programação dos novos métodos com marcadores \\\end{tabular} & & {\cellcolor[rgb]{.3,.3,1}} & & & & & \\ 
-    \hline
- Montagem dos protótipos de tiara e cubo & & {\cellcolor[rgb]{.3,.3,1}} & {\cellcolor[rgb]{.3,.3,1}} & & & & \\ 
-    \hline
- Estudos no exterior (BEPE) & & & & {\cellcolor[rgb]{.3,.3,1}} & {\cellcolor[rgb]{.3,.3,1}} & & \\ 
-    \hline
-   Produção de relatório final e relatório BEPE & & & & & & {\cellcolor[rgb]{.3,.3,1}} & {\cellcolor[rgb]{.3,.3,1}}\\ 
-    \hline
-    Apresentação final do trabalho* & & & & & & & {\cellcolor[rgb]{.3,.3,1}}  \\
-    \hline
+    \centering
+    \begin{tabular}{lllllll} 
+            \hline
+        \multicolumn{7}{c}{\textbf{Cronograma de atividades para a extensão}} \\ 
+            \hline
+        & & {\cellcolor[rgb]{1,.3,.3}} & \multicolumn{4}{l}{Execução} \\ 
+            \hline
+        \textbf{Atividade} & \textbf{Bimestre} & 1 & 2 & 3 & 4 & 5\\ 
+            \hline
+        Programação dos novos métodos com marcadores & & {\cellcolor[rgb]{1,.3,.3}} & & & & \\ 
+            \hline
+        Montagem dos protótipos de tiara e cubo & & {\cellcolor[rgb]{1,.3,.3}} & {\cellcolor[rgb]{1,.3,.3}} & & & \\ 
+            \hline
+        Estudos no exterior (BEPE) & & & & {\cellcolor[rgb]{1,.3,.3}} & {\cellcolor[rgb]{1,.3,.3}} & \\ 
+            \hline
+        Produção de relatório final e relatório BEPE & & & & & & {\cellcolor[rgb]{1,.3,.3}}\\ 
+            \hline
+        Apresentação final do trabalho* & & & & & & {\cellcolor[rgb]{1,.3,.3}}  \\
+            \hline
     \end{tabular}
     \caption{*A apresentação para os pesquisadores da parceria do Centro de Cirurgia de Epilepsia (CIREP) do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto-USP}
     \label{fig:tabela}
