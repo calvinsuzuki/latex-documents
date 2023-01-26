@@ -4,20 +4,49 @@ Durante os estudos de transformações de rotação e translação de objetos em
 
 \section{Ângulos de Euler}
 
-É um dos meios de descrever a orientação de um corpo rígido que Leonard Euler formulou.
+É um método que descreve a orientação de corpos rígidos por meio de três rotações sucessivas, desenvolvido no século XVIII por Leonard Euler. Consiste em realizar três multiplicações matriciais, introduzidas a seguir \cite{Euler}.
+\[ A = B . C . D = RotZ(\phi) . RotX(\theta) . RotZ(\psi) \]
+\[ A =
+\renewcommand\arraystretch{.8}
+\begin{bmatrix}
+    \cos \phi & \sin \phi & 0 \\
+    -\sin \phi & \cos \phi & 0 \\
+    0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & \cos \theta & \sin \theta \\
+    0 & -\sin \theta & \cos \theta
+\end{bmatrix}
+\begin{bmatrix}
+    \cos \psi & \sin \psi & 0 \\
+    -\sin \psi & \cos \psi & 0 \\
+    0 & 0 & 1
+\end{bmatrix} \]
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.8\textwidth]{figuras/euler.png}
+    \caption{Sequência de rotações ZXZ de Euler. Fonte: \cite{Euler}.}
+    \label{fig:euler_rot}
+\end{figure}
 
-\section{Parâmetros de Rodrigues}
+Com isso obteremos uma matriz ortogonal A que será a transformação do objeto em \(\mathbb{R}_3\) ou no mundo virtual do \textit{Unity}. Esse método de rotação é utilizado no \textit{Unity} como uma das propriedades de um objeto em relação a outro objeto (\textit{parent}). Neste, as rotações podem ser configuradas por ângulos de Euler, mas internamente \textit{Unity} traduz o método para quatérnios\footnote[1]{Os quatérnios foram desenvolvidos pelo matemático irlandês William Rowan Hamilton em 1843 e aplicados à mecânica no espaço tridimensional. São amplamente utilizados em computação gráfica por simplificar a quantidade de operações matemáticas de rotações em relação a outros métodos \cite{QuaternionWiki}.} com o fim de evitar \textit{Gimbal Locks}\footnote[2]{É uma condição em que perde-se um grau de liberdade, degenerando a rotação do sistema para bidimensional. Em engenharia, esse problema se caracteriza como uma singularidade e afeta a previsibilidade de diversos sistemas \cite{GimbalWiki}.} e otimizar os cálculos em cada iteração \cite{Quaternion}.
 
+\section{Rotação de Rodrigues}\label{chp:rot}
 
+É considerado um método muito eficiente de descrever uma rotação, desenvolvido em 1989 por Olinde Rodrigues sobre os fundamentos de Leonhard Euler. O método aplica uma rotação no vetor \(\vec{\mathbf{v}}\) no eixo de rotação descrito com o vetor \(\vec{k}\) e um ângulo \(\theta\) \cite{RodriguesWiki}:
 
+\[\vec{\mathbf{v}}_{rot} = \vec{\mathbf{v}} \cos \theta + (\vec{k} \times \vec{\mathbf{v}}) \sin \theta + \vec{k} \ (\vec{k} \cdot \vec{\mathbf{v}}) \ (1 - \cos \theta) \] 
+
+A biblioteca do \textit{OpenCV} utiliza a descrição compacta de Rodrigues para detectar os marcadores \textit{ArUco}. No entanto, invés de retornar o vetor \(\vec{k}\) e o ângulo \(\theta\), ele retorna \( \vec{r} = \vec{k} \cdot \theta\). Como \(\vec{k}\) é um vetor unitário, podemos obter o ângulo com o cálculo do módulo de \(\vec{r}\): \(\theta = |\ \vec{r}\ |\).
 
 \section{Calibração}\label{chp:calibr}
 
 O processo de calibração do \textit{VCranium} foi complexo por abranger diversos conceitos de visão computacional e sua aplicabilidade na plataforma do \textit{Unity} \cite{UnityOficial}. Decidimos fragmentar o problema e estudá-los separadamente:
 
 \begin{description}
-    \item[Rotação:] Realizado com o \textit{RVEC} de \textit{Rodrigues} de cada \textit{frame};
-    \item[Translação:] Realizado com o \textit{TVEC} de \textit{Rodrigues} de cada \textit{frame};
+    \item[Rotação:] Obtido com o \textit{RVEC} que porta o vetor \(\vec{r}\) explicado na Seção \ref{chp:rot} para cada \textit{frame};
+    \item[Translação:] Obtido com o \textit{TVEC} em forma de um vetor de translação de cada \textit{frame};
     \item[\textit{Field of View}:] (\textit{FOV}) Calculado com as informações intrínsecas da calibração da câmera;
     \item[Distorção:] Calculado com as informações de distorção da calibração da câmera;
 \end{description}
@@ -33,7 +62,7 @@ A informação da rotação do modelo virtual do cérebro é adquirida da comuni
     \label{fig:frodrigues}
 \end{figure}
 
-Um método foi implementado para a formatar cada mensagem gerada pela detecção da posição do marcador, transformando uma lista do \textit{Python} em uma \textit{string} com o formato de \textit{UTF-8}, como é mostrado no \textit{RVEC} da Figura \ref{fig:frodrigues}. Assim que a aplicação recebe os três números, eles representam o vetor de rotação com as coordenadas X, Y e Z, respectivamente. Para descobrirmos a magnitude da rotação neste eixo, deve-se calcular o módulo desse vetor de rotação, o resultado é dado em radianos.
+Um método foi implementado para formatar cada mensagem gerada pela detecção da posição do marcador, transformando uma lista do \textit{Python} em uma \textit{string} com o formato de \textit{UTF-8}, como é mostrado no \textit{RVEC} da Figura \ref{fig:frodrigues}. Assim que a aplicação recebe os três números, eles representam o vetor de rotação com as coordenadas X, Y e Z, respectivamente. Para descobrirmos a magnitude da rotação neste eixo, deve-se calcular o módulo desse vetor de rotação, o resultado é dado em radianos.
 
 \subsection{Translação}
 
@@ -48,7 +77,7 @@ Da mesma forma que a rotação, a translação é recebida do \textit{TVEC} da m
 
 \subsection{\textit{Field of View}}
 
-O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera com o \textit{chessboard} que calcula a distorção e os intrínsecos da câmera, nomeados respectivamente de \textit{DIST} e \textit{MTX}. Para determinar o \textit{FOV} da câmera observamos a matriz \textit{MTX} [FONTE]:
+O \textit{Field of View} (\textit{FOV}) é calculado da calibração da câmera com o \textit{chessboard} que calcula a distorção e os intrínsecos da câmera, nomeados respectivamente de \textit{DIST} e \textit{MTX}. Para determinar o \textit{FOV} da câmera observamos a matriz \textit{MTX} \cite{Calibration}:
 
 \begin{figure}[ht]
     \centering
@@ -77,17 +106,14 @@ Sendo \(w\) e \(h\) a largura e a altura em \textit{pixels}, respectivamente. N�
     
 \subsection{Distorção}
 
-% https://en.wikipedia.org/wiki/Pinhole_camera
-% https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibrationtutorial_py_calibration.html
-% https://en.wikipedia.org/wiki/Distortion_%28optics%29
-A documentação do \textit{OpenCV} baseia-se na câmera \textit{pinhole} e modela duas principais distorções: radial e tangencial. 
+A documentação do \textit{OpenCV} baseia-se na câmera \textit{pinhole} e modela duas principais distorções: radial e tangencial \cite{Pinhole}. 
 
 \begin{description}
     \item[Radial:] A distorção radial é percebida como retas se curvando em relação ao centro. Causada pela fabricação da forma circular das lentes, o que contribui para um maior campo de visão.
 \end{description}
 \[ x_{distorted} = x(1+k_1 r^2 + k_2 r^4 + k_3 r^6) \]
 \[ y_{distorted} = y(1+k_1 r^2 + k_2 r^4 + k_3 r^6) \]
-\begin{figure}[H] % https://learnopencv.com/understanding-lens-distortion/
+\begin{figure}[H]
     \centering
     \includegraphics[width=.65\linewidth]{figuras/radial-dist.png}
     \caption{Exemplos de distorção radial. Fonte: Autor.}
@@ -105,7 +131,7 @@ A documentação do \textit{OpenCV} baseia-se na câmera \textit{pinhole} e mode
     \label{fig:tan_dist}
 \end{figure}
 
-Utilizando as fórmulas apresentadas acima e os parâmetros intrínsecos \(f_x \ f_y \ c_x \ c_y\) e distorção \(k_1 \ k_2 \ k_3 \ p_1 \ p_2\), tem-se todas as variáveis necessárias para a modelagem da câmera com \textit{OpenCV}:
+Utilizando as fórmulas apresentadas acima e os parâmetros intrínsecos \(f_x \ f_y \ c_x \ c_y\) e distorção \(k_1 \ k_2 \ k_3 \ p_1 \ p_2\), tem-se todas as variáveis necessárias para a modelagem da câmera com \textit{OpenCV} \cite{Calibration}:
 
 \[ DIST = [ k_1 \ k_2 \ p_1 \ p_2 \ k_3 ]; \ \ \ \ \ \ \ \
 MTX = 
@@ -140,9 +166,9 @@ Dada a teoria da visão computacional apresentada na Seção \ref{chp:calibr}, t
 
 \subsection{Ajuste dos intrínsecos}
 
-A Seção \ref{chp:calibr} também explicita que obtemos todos os parâmetros intrínsecos e de distorção de uma câmera após a calibração com o método do \textit{chessboard} (Figura \ref{fig:chess_calib}). Porém, é necessário um método que realize a calibração da câmera em que o \textit{VCranium} está sendo executado, para isso, deve-se criar um método auxiliar que capture uma série de imagens e envie para o computador calibrar e encontrar os parâmetros.
+A Seção \ref{chp:calibr} também explicita que obtemos todos os parâmetros intrínsecos e de distorção de uma câmera após a calibração com o método do \textit{chessboard} (Figura \ref{fig:chess_calib}). Porém, é necessário um método que realize a calibração da câmera em que o \textit{VCranium} está sendo executado, para isso, deve-se criar um método auxiliar que capture uma série de imagens e envie para o computador calibrar e encontrar os parâmetros \cite{Calibration}.
 
-A principal ideia que se tem ao criar esse sistema é receber uma imagem assim que o usuário pressionar o botão de captura. Assim como foi estudado em relatórios anteriores, é necessário construir um \textit{header} simples que antecede o envio da imagem para o servidor preparar a sua recepção, e então, guardar a informação de cada imagem em uma lista auxiliar. O próximo passo é usar o comando \textit{calibrateCamera} da biblioteca do \textit{OpenCV} e o programa retorna as informações necessárias (\(f_x, \ f_y, \ c_x, \ c_y, \ k_1, \ k_2, \ k_3, \ p_1, \ p_2\)).
+A principal ideia que se tem ao criar esse sistema é receber uma imagem assim que o usuário pressionar o botão de captura. Assim como foi estudado em relatórios anteriores, é necessário construir um \textit{header} simples que antecede o envio da imagem para o servidor preparar a sua recepção, e então, guardar a informação de cada imagem em uma lista auxiliar. O próximo passo é usar o comando \textit{calibrateCamera} da biblioteca do \textit{OpenCV} e o programa retorna as informações necessárias (\(f_x, \ f_y, \ c_x, \ c_y, \ k_1, \ k_2, \ k_3, \ p_1, \ p_2\)) \cite{Calibration}.
 
 O desenvolvimento desse programa auxiliar não apresenta maiores desafios se comparado com o histórico do projeto desde 2021. No entanto, assim que o aplicativo \textit{Unity} receber todos os parâmetros, não é trivial a distorção do modelo para a sobreposição em uma aplicação de realidade do tipo \textit{VST} (\textit{Video See-Through}).
 
