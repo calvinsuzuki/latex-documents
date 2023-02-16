@@ -125,23 +125,23 @@
     \Large \textbf{\textsc{\meuTitulo}}
  	\HRule{1.5pt} \\ [0.5cm]
     \linespread{1}
-    \large Relatório final
+    \large Research Internships Abroad Proposal
     \ifdefined\modProjeto
         na modalidade \modProjeto,
     \fi
-       submetido à \agFom
+       destined to \agFom
        \ifx\siglaAgFom\empty\relax\else
           \xspace(\siglaAgFom)\xspace
        \fi. \\ 
    	\HRule{1.5pt} \\ [0.5cm]
-   	Processo: \numProj
+   	FAPESP Process Number: \numProj
    	
-    Pesquisador Responsável: \tituloProf \space \nomeProf
+    Scholarship Supervisor: \tituloProf \space \nomeProf
     
-    Coorientador: \tituloCoorientador \space \nomeCoorientador
+    Supervisor for BEPE’s Internship: \tituloCoorientador \space \nomeCoorientador
     
     \ifdefined\nomeBeneficiario
-          Beneficiário: \nomeBeneficiario
+          Student: \nomeBeneficiario
     \fi
     \vfill
        
@@ -162,8 +162,8 @@
 \fancyfoot[R]{\thepage}
 %
 % Adição das palavras específicas no Portugês para sumário e referências bibliográficas.
-\addto\captionsportuguese{\renewcommand{\contentsname}{Sumário}}
-\addto\captionsportuguese{\renewcommand{\bibname}{Referências bibliográficas}}
+\addto\captionsportuguese{\renewcommand{\contentsname}{Table of Contents}}
+\addto\captionsportuguese{\renewcommand{\bibname}{References}}
 % 
 % Definição do comando de seção de prefácio.
 \def\prefacesection#1{
@@ -183,7 +183,7 @@
 %
 % Definição da seção de resumo.
 \newenvironment{resumo}
-    { \prefacesection{Resumo} 
+    { \prefacesection{Abstract} 
       \selectlanguage{portuguese}
     }
     { \resetlang 
@@ -199,29 +199,29 @@
 %
 % Definição do comando para Folha de rosto em português
 \newcommand{\folhaDeRosto}{
-   \chapter*{Informações gerais do projeto}
-   \addcontentsline{toc}{chapter}{Informações gerais do projeto}
+   \chapter*{General Internship Proposal information}
+   \addcontentsline{toc}{chapter}{General project information}
    \begin{itemize}
-      \item Título do projeto: 
+      \item Project title: 
             \begin{itemize}\item[] \textbf{\meuTitulo} \end{itemize}
-      \item Pesquisador responsável: 
+      \item Scholarship Supervisor: 
             \begin{itemize}\item[]\textbf{\tituloProf \space \nomeProf}
             \end{itemize}
-        \item Coorientador: 
+        \item Supervisor for BEPE’s Internship: 
             \begin{itemize}\item[]\textbf{\tituloCoorientador \space \nomeCoorientador}
             \end{itemize}
             
       \ifdefined\nomeBeneficiario
-          \item Beneficiário: 
+          \item Student: 
               \begin{itemize}
                  \item[]\textbf{\nomeBeneficiario}
               \end{itemize}
       \fi
-        \item Número do processo do projeto: 
+        \item FAPESP Process Number: 
               \begin{itemize}
                  \item[]\textbf{\numProj}
               \end{itemize}
-      \item Instituição sede do projeto: 
+      \item Home institution: 
             \begin{itemize}
                \item[]\textbf{\nomeFaculdade\xspace da\xspace \nomeUniversidade} 
             \end{itemize}
@@ -239,26 +239,14 @@
              \ifx\nomeMembroF\undefined\else \item[]\textbf{\nomeMembroF,  \tituloMembroF}\fi
              \end{itemize}
        \fi
-       \item Período de vigência proposto:
+       \item Proposed Duration:
             \begin{itemize}
                \item[]\textbf{
-                   \inicioPeriodVigDia\xspace de\xspace
-                   \ifcase \inicioPeriodVigMes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de\xspace
-                   \inicioPeriodVigAno\xspace a\xspace
-                   \fimPeriodVigDia\xspace de\xspace
-                   \ifcase \fimPeriodVigMes \or janeiro\or fevereiro\or março\or abril\or maio\or       junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de\xspace 
-                   \fimPeriodVigAno
-               }
-            \end{itemize}
-        \item Período coberto por este relatório científico:
-            \begin{itemize}
-               \item[]\textbf{
-                   \inicioPeriodVigDia\xspace de\xspace
-                   \ifcase \inicioPeriodVigMes \or janeiro\or fevereiro\or março\or abril\or maio\or junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de\xspace
-                   \inicioPeriodVigAno\xspace a\xspace
-                   \relatPeriodVigDia\xspace de\xspace
-                   \ifcase \relatPeriodVigMes \or janeiro\or fevereiro\or março\or abril\or maio\or       junho\or julho\or agosto\or setembro\or outubro\or novembro\or dezembro\fi\xspace de\xspace 
-                   \relatPeriodVigAno
+                \ifcase \inicioPeriodVigMes \or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi\xspace
+                \inicioPeriodVigAno\xspace to\xspace
+                \fimPeriodVigDia\xspace 
+                \ifcase \fimPeriodVigMes \or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi\xspace
+                \fimPeriodVigAno
                }
             \end{itemize}
    \end{itemize}

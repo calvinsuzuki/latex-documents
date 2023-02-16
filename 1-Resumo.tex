@@ -1,60 +1,58 @@
-\chapter{Resumo do projeto}\label{chp:resultadosEsparados}
+\chapter{Introduction}\label{chp:resultadosEsparados}
 
-\section{Enunciado do problema}
+\section{Motivation}
 
-Atualmente na medicina, as cirurgias têm o objetivo de causar a mínima agressão ao organismo do paciente, isso implica em um menor tempo de hospitalização; menor incidência de complicações pós-operatórias; menos dor; e recuperação mais rápida \cite{MinInv}. Contudo, entre os diversos desafios de sua realização, a habilidade visual do médico, que envolve a capacidade de localizar e identificar os tecidos sensíveis, é essencial para redução dos danos ao paciente durante um procedimento cirúrgico, nos levando à questão: Como podemos potencializar a visão do médico para aumentar a qualidade dessas operações? 
+Currently in medicine, surgeries have the objective of causing the least aggression to the patient's organism, which implies a shorter hospitalization time; less incidence of postoperative complications; less pain; and quicker recovery. However, among the many challenges involved in its implementation, the physician's visual ability, which involves the ability to locate and identify sensitive tissues, is essential to reduce damage to the patient during a surgical procedure, leading us to the question: How can we enhance the doctor's vision to increase the quality of these operations?
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.55\linewidth]{figuras/enunciado.png}
-    \caption{Exemplo da utilização de neuronavegador em cirurgia. Fonte: \cite{santacasa}.}
+    \caption{Example of using a neuronavigator in surgery. Source: \cite{santacasa}.}
     \label{fig:enunciado}
 \end{figure}
 
-Para esse fim, um \textit{software} que informa e assiste o médico em tempo real na operação denota-se como um ótimo meio de aumentar as chances de sucesso dessas cirurgias. Atualmente, esses \textit{softwares} são muito presentes no planejamento e execução das operações, entretanto, toma-se como exemplo os sistemas de neuronavegação, cuja função é permitir visualização, de forma precisa, das estruturas cerebrais do paciente. O neurocirurgião precisa virar a cabeça para ler os monitores e perde o foco na atividade conduzida, colaborando para um maior tempo de operação e favorecendo a exaustão do profissional, de modo que aumente seu potencial de erros durante os procedimentos cirúrgicos (Figura \ref{fig:enunciado}). 
+To this end, software that informs and assists the doctor in real time during the operation is a great way to increase the chances of success in these surgeries. Currently, these software are very present in the planning and execution of operations, however, neuronavigation systems are an example, whose function is to allow the visualization, in a precise way, of the patient's brain structures. The neurosurgeon has to turn his head to read the monitors and loses focus on the activity being conducted, collaborating for a longer operation time and favoring the exhaustion of the professional, in a way that increases his potential for errors during surgical procedures (Figure \ref{fig:enunciado}).
 
-Para isso, a tecnologia de realidade aumentada (\textit{AR}) oferece o potencial de reduzir essas limitações, em razão de que figuras tridimensionais podem sobrepor a visão do médico para facilitar a visualização e a localização dos objetivos da operação enquanto mantém seus olhos direcionados ao paciente \cite{enhancedvision}. O que foi feito nesse projeto é uma pesquisa que envolve visão computacional e computação gráfica no campo do \textit{AR} e uma aplicação para os óculos da empresa \textit{Seiko Epson Corporation\textsuperscript{\textregistered}}, modelo \textit{Moverio BT-350\texttrademark}. Recebendo suporte físico e técnico da equipe do Laboratório Aeronáutico de Tecnologias (Aerotech) da Universidade de São Paulo, esse estudo corrobora com o objetivo do grupo que é desenvolver uma plataforma colaborativa de multi-aplicação neurocirúrgica. 
+To do this, augmented reality (AR) technology offers the potential to reduce these limitations, as three-dimensional figures can superimpose the doctor's vision to facilitate visualization and location of the objectives of the operation while keeping their eyes focused on the patient \cite{enhancedvision}. What was done in this project is a research involving computer vision and computer graphics in the field of AR and an application for the glasses of the company Seiko Epson Corporation\textregistered , model Moverio BT-350\texttrademark. Receiving physical and technical support from the Aeronautical Technology Laboratory (Aerotech) team at the University of São Paulo, this study corroborates the group's objective, which is to develop a collaborative neurosurgical multi-application platform.
 
-\section{Objetivo}
+\section{Objective}
 
-Exibir informações e posicionar modelos tridimensionais em uma região do espaço com \textit{AR}, de forma que facilite o acesso do cirurgião à informação durante a neurocirurgia; estudar e registrar a resposta dos equipamentos utilizados no quesito de qualidade gráfica e latência de resposta do sistema. Tudo isso, com o objetivo central de aumentar a proximidade do cirurgião com a tecnologia de \textit{AR} como apoio durante os procedimentos cirúrgicos.
+Display information and position three-dimensional models in a region of space with AR, in a way that facilitates the surgeon's access to information during neurosurgery; study and record the response of the equipment used in terms of graphic quality and system response latency. All of this, with the central objective of increasing the proximity of the surgeon to the AR technology as a support during surgical procedures.
 
-\section{Metodologia}
+% \section{Method}
 
-Consiste na listagem de possíveis soluções, técnicas ou ferramentas; o estudo e a discussão sobre elas, em seguida, sua implementação. Paralelamente a isso, a busca bibliográfica é constantemente realizada com o objetivo de esclarecer dúvidas sobre os meios imaginados e discutidos com o orientador e coorientador. Essa busca enfatiza os resultados encontrados pelos artigos, o objetivo disto é caracterizar os prós e contras das diversas opções encontradas. Essa pesquisa de artigos trás uma evolução do discernimento dos assuntos do estado da arte, refletindo em uma noção de funcionamento dos métodos científicos que constrói um novo pesquisador no desenvolvimento dessa iniciação científica.
+% Consiste na listagem de possíveis soluções, técnicas ou ferramentas; o estudo e a discussão sobre elas, em seguida, sua implementação. Paralelamente a isso, a busca bibliográfica é constantemente realizada com o objetivo de esclarecer dúvidas sobre os meios imaginados e discutidos com o orientador e coorientador. Essa busca enfatiza os resultados encontrados pelos artigos, o objetivo disto é caracterizar os prós e contras das diversas opções encontradas. Essa pesquisa de artigos trás uma evolução do discernimento dos assuntos do estado da arte, refletindo em uma noção de funcionamento dos métodos científicos que constrói um novo pesquisador no desenvolvimento dessa iniciação científica.
 
-\section{Breve histórico do projeto}
+\section{Brief history of the project}
 
-Desde o início dos trabalhos no projeto, foram experimentados diversos tipos de contato com a elaboração de \textit{softwares} para o sistema operacional \textit{Android} (Figura \ref{fig:sceneform}); testes das ferramentas da documentação dos óculos de realidade aumentada \textit{Moverio BT-350} (Figuras \ref{fig:latinha} e \ref{fig:papercar}); e a elaboração de aplicativos que ilustram o objetivo do \textit{VCranium} \footnote[1]{Nome fantasia designado ao projeto de sistema de posicionamento e exibição de realidade aumentada para aplicação cirúrgica} (Figura \ref{fig:vcranium_alpha}). Assim, como foi explicado no relatório parcial da pesquisa, pretendíamos prosseguir o desenvolvimento estabelecendo uma arquitetura composta por computador e óculos para capturar os dados necessários para a projeção em realidade aumentada, os detalhes serão descritos no capítulo das realizações.
-
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=.95\textwidth]{figuras/sceneform.png}
-        \caption{Primeiro aplicativo AR para \textit{Android}}
+        \caption{First AR app for Android}
         \label{fig:sceneform}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=.95\linewidth]{figuras/Latinha-errada.png}
-        \caption{Tentativa de calibração do \textit{Moverio}}
+        \caption{Moverio calibration attempt}
         \label{fig:latinha}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=.95\textwidth]{figuras/PaperCarAR.png}
-        \caption{Aplicativo fornecido pela \textit{EPSON}}
+        \caption{Application provided by EPSON}
         \label{fig:papercar}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=.95\linewidth]{figuras/VCranium.png}
-        \caption{Primeira versão do \textit{VCranium}}
+        \caption{First version of VCranium}
         \label{fig:vcranium_alpha}
     \end{subfigure}
-    \caption{Histórico de realizações da pesquisa até a primeira entrega parcial. Fonte: Autor.}
+    \caption{History of research since 2020.}
     \label{fig:historico}
 \end{figure}
 
-
+Since the beginning of work on the project in 2020, different types of contact have been experienced with the development of software for the Android operating system (Figure \ref{fig:sceneform}); tests of the Moverio BT-350 augmented reality glasses documentation tools (Figures \ref{fig:latinha} and \ref{fig:papercar}); and the creation of applications that illustrate the purpose of VCranium \footnote[1]{Fantasy name assigned to the project of positioning system and display of augmented reality for surgical application} (Figure \ref{fig:vcranium_alpha}).
